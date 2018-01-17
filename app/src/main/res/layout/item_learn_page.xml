@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_learn"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/learn_background"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true"
+        android:background="@android:color/transparent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:weightSum="10">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="9">
+
+
+            <ImageView
+                android:id="@+id/iv_learn_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginBottom="@dimen/main_margin_half"
+                android:padding="32dp"
+                android:src="@drawable/c_i_cat_fish" />
+
+
+            <ImageView
+                android:id="@+id/iv_go_right"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="8dp"
+                android:rotation="180"
+                android:src="@drawable/ic_arrow" />
+
+            <ImageView
+                android:visibility="invisible"
+                android:id="@+id/iv_go_left"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:src="@drawable/ic_arrow" />
+
+        </RelativeLayout>
+
+
+        <LinearLayout
+            android:layout_width="300dp"
+            android:layout_height="100dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="16dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:weightSum="2">
+
+            <RelativeLayout
+                android:id="@+id/rl_eName"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginBottom="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/choise_one"
+                android:padding="4dp">
+
+                <TextView
+                    android:id="@+id/tv_learn_ename"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="asdasd"
+                    android:textAllCaps="true"
+                    android:textColor="@color/white"
+                    android:textSize="24sp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_pname"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="@drawable/choise_twoo"
+                android:gravity="center_vertical"
+                android:padding="4dp">
+
+
+                <TextView
+                    android:id="@+id/tv_learn_pname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:gravity="center"
+                    android:text="asdasd"
+                    android:textAllCaps="true"
+                    android:textColor="@color/white"
+                    android:textSize="24sp" />
+
+            </RelativeLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+
+</RelativeLayout>

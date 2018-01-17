@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    tools:context="learnlanguages.hk.com.activities.SplashScreenActivity">
+
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/learn_background" />
+
+    <com.luolc.emojirain.EmojiRainLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/group_emoji_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:dropDuration="2400"
+        app:dropFrequency="500"
+        app:duration="4900"
+        app:per="5"
+        tools:context="com.luolc.emojirain.sample.MainActivity"/>
+
+
+
+    <TextView
+        android:id="@+id/app_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/title_border"
+        android:gravity="bottom|center_horizontal"
+        android:paddingBottom="10dp"
+        android:text="polyglot"
+        android:textAllCaps="true"
+        android:textColor="#fff"
+        android:textSize="35sp" />
+
+
+</RelativeLayout>

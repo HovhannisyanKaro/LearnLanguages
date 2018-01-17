@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/learn_background"
+    tools:context="learnlanguages.hk.com.activities.WriteActivity">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:weightSum="10"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <View
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"/>
+
+        <RelativeLayout
+            android:layout_weight="6"
+            android:src="@drawable/c_i_bat"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@drawable/border_two" >
+
+            <ImageView
+                android:id="@+id/iv_image_png"
+                android:layout_centerInParent="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:gravity="center"
+            android:layout_weight="3"
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
+
+            <LinearLayout
+                android:gravity="center"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/tv_answer"
+                    android:textColor="#535252"
+                    android:textSize="26sp"
+                    android:text="_ _ _ _   _ _ _ _"
+                    android:layout_marginBottom="16dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:id="@+id/ll_words_container"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+
+
+
+
+
+
+
+</RelativeLayout>

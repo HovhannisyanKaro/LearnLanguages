@@ -1,0 +1,309 @@
+<resources>
+    <string name="app_name">Սովորում ենք անգլերեն</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="skip">SKIP</string>
+    <string name="listen">LISTEN</string>
+    <string name="domestic">Ընտանի</string>
+    <string name="sea">Ծովային</string>
+    <string name="whild">Վայրի</string>
+    <string name="birds">Թռչուններ</string>
+    <string name="learn">Սովորել</string>
+    <string name="play">Խաղալ</string>
+    <string name="easy">Հեշտ</string>
+    <string name="middle">Միջին</string>
+    <string name="hard">Բարդ</string>
+    <string name="congratulations">Շնորհավոր</string>
+
+
+    <string-array name="real_animal_whild">
+        <item>lioness</item>
+        <item>red_panda</item>
+        <item>orangutan</item>
+        <item>koala</item>
+        <item>fox</item>
+        <item>chipmunk</item>
+        <item>chameleon</item>
+        <item>bison</item>
+        <item>black_bear</item>
+        <item>boar</item>
+        <item>cheetah</item>
+        <item>chimpanzee</item>
+        <item>deer</item>
+        <item>elephant</item>
+        <item>gazelle</item>
+        <item>giraffe</item>
+        <item>gorilla</item>
+        <item>grizzly_bear</item>
+        <item>hedgehog</item>
+        <item>hippo</item>
+        <item>hyena</item>
+        <item>jackal</item>
+        <item>jaguar</item>
+        <item>kangaroo</item>
+        <item>leopard</item>
+        <item>lion</item>
+        <item>lynx</item>
+        <item>meerkat</item>
+        <item>monkey</item>
+        <item>opossum</item>
+        <item>oryx</item>
+        <item>panda</item>
+        <item>polar_bear</item>
+        <item>porcupine</item>
+        <item>raccoon</item>
+        <item>squirrel</item>
+        <item>tiger</item>
+        <item>wolf</item>
+        <item>zebra</item>
+    </string-array>
+
+    <string-array name="real_animal_whild_arm">
+        <item>առյուծ</item>
+        <item>կարմիր_պանդա</item>
+        <item>օրանգուտան</item>
+        <item>կոալա</item>
+        <item>աղվես</item>
+        <item>սկյուռիկ</item>
+        <item>քամելեոն</item>
+        <item>Բիզոն</item>
+        <item>Սև արջ</item>
+        <item>վայրի խոզ</item>
+        <item>Չեթա</item>
+        <item>շիմպանզե</item>
+        <item>եղնիկ</item>
+        <item>փիղ</item>
+        <item>քարայծ</item>
+        <item>ընձուղտ</item>
+        <item>գորիլա</item>
+        <item>Գորշ արջ</item>
+        <item>ոզնի</item>
+        <item>գետաձի</item>
+        <item>բորենի</item>
+        <item>շնագայլ</item>
+        <item>վագրակատու</item>
+        <item>Կենգուրու</item>
+        <item>ընձառյուծ</item>
+        <item>առյուծ</item>
+        <item>լուսան</item>
+        <item>մանգուստ</item>
+        <item>կապիկ</item>
+        <item>օփոսում</item>
+        <item>կամիկ</item>
+        <item>պանդա</item>
+        <item>սպիտակ արջ</item>
+        <item>փորսուղ</item>
+        <item>Ջրարջ</item>
+        <item>սկյուռ</item>
+        <item>վագր</item>
+        <item>գայլ</item>
+        <item>ԶԵԲՐ</item>
+    </string-array>
+
+
+    <string-array name="real_animal_sea">
+        <item>tuna</item>
+        <item>lizard</item>
+        <item>sword_fish</item>
+        <item>striped_marlin</item>
+        <item>stingray</item>
+        <item>squid</item>
+        <item>otter</item>
+        <item>orca_whale</item>
+        <item>marlin</item>
+        <item>alligator</item>
+        <item>blue_whale</item>
+        <item>cat_fish</item>
+        <item>clown_fish</item>
+        <item>cobra_snake</item>
+        <item>crab</item>
+        <item>crocodile</item>
+        <item>dolphin</item>
+        <item>eel</item>
+        <item>frog</item>
+        <item>iguana</item>
+        <item>jelly_fish</item>
+        <item>lobster</item>
+        <item>octopus</item>
+        <item>porcupine_fish</item>
+        <item>python_snake</item>
+        <item>rainbow_trout</item>
+        <item>salamander</item>
+        <item>sea_horse</item>
+        <item>seal</item>
+        <item>seaturtle</item>
+        <item>sea_urchin</item>
+        <item>shark</item>
+        <item>shrimp</item>
+        <item>starfish</item>
+        <item>toad</item>
+        <item>turtle</item>
+        <item>warlus</item>
+        <item>yellow_fish</item>
+    </string-array>
+
+
+    <string-array name="real_animal_sea_arm">
+        <item>թունա</item>
+        <item>մողես</item>
+        <item>թրաձուկ</item>
+        <item>գծավոր_սղոցաձուկ</item>
+        <item>կատվաձուկ</item>
+        <item>կաղամար</item>
+        <item>ջրասամույր</item>
+        <item>կետանման_դելֆին</item>
+        <item>սղոցաձուկ</item>
+        <item>ալիգատոր</item>
+        <item>Կապույտ_կետ</item>
+        <item>լոքո</item>
+        <item>ծաղրածու_ձուկ</item>
+        <item>կոբրա</item>
+        <item>ծովախեցգետին</item>
+        <item>կոկորդիլոս</item>
+        <item>դելֆին</item>
+        <item>օձաձուկ</item>
+        <item>գորտ</item>
+        <item>վարան</item>
+        <item>մեդուզա</item>
+        <item>օմար</item>
+        <item>ութոտնուկ</item>
+        <item>ոզնեձուկ</item>
+        <item>պիտոն</item>
+        <item>ծածան</item>
+        <item>սալամանդեր</item>
+        <item>ծովաձիուկ</item>
+        <item>փոկ</item>
+        <item>ծովային_կրիա</item>
+        <item>ծովային_սուսեր</item>
+        <item>շնաձուկ</item>
+        <item>մանր_ծովախեցգետին</item>
+        <item>ծովաստղ</item>
+        <item>դոդոշ</item>
+        <item>կրիա</item>
+        <item>ծովառյուծ</item>
+        <item>դեղին_ձուկ</item>
+    </string-array>
+
+
+    <string-array name="real_animal_birds">
+        <item>starling</item>
+        <item>robin</item>
+        <item>eagle</item>
+        <item>bee_eater</item>
+        <item>bat</item>
+        <item>budgie</item>
+        <item>canary</item>
+        <item>crow</item>
+        <item>dove</item>
+        <item>duck</item>
+        <item>finch</item>
+        <item>flamingo</item>
+        <item>goose</item>
+        <item>hawk</item>
+        <item>hen</item>
+        <item>heron</item>
+        <item>hoopoe</item>
+        <item>hornbill</item>
+        <item>hummingbird</item>
+        <item>ostrich</item>
+        <item>owl</item>
+        <item>parrot</item>
+        <item>partridge</item>
+        <item>peacock</item>
+        <item>pelican</item>
+        <item>penguin</item>
+        <item>pheasant</item>
+        <item>pigeon</item>
+        <item>rooster</item>
+        <item>seagull</item>
+        <item>sparrow</item>
+        <item>storks</item>
+        <item>swan</item>
+        <item>vulture</item>
+        <item>woodpecker</item>
+    </string-array>
+
+    <string-array name="real_animal_birds_arm">
+        <item>սարյակ</item>
+        <item>շիկահավ</item>
+        <item>արծիվ</item>
+        <item>մեղվակեր</item>
+        <item>չղջիկ</item>
+        <item>թութակ</item>
+        <item>դեղձանիկ</item>
+        <item>ագռավ</item>
+        <item>աղավնի</item>
+        <item>բադ</item>
+        <item>սերինոս</item>
+        <item>ֆլամինգո</item>
+        <item>սագ</item>
+        <item>անգղ</item>
+        <item>հավ</item>
+        <item>ձկնկուլ</item>
+        <item>հոպոպ</item>
+        <item>hornbill</item>
+        <item>կոլիբրի</item>
+        <item>ջայլամ</item>
+        <item>բու</item>
+        <item>թութակ</item>
+        <item>կաքավ</item>
+        <item>սիրամարգ</item>
+        <item>փորահավ</item>
+        <item>պինգվին</item>
+        <item>փասիան</item>
+        <item>աղավնի</item>
+        <item>աքաղաղ</item>
+        <item>ճայ</item>
+        <item>տատրակ</item>
+        <item>արագիլ</item>
+        <item>կարապ</item>
+        <item>գիշանգղ</item>
+        <item>փայտփորիկ</item>
+    </string-array>
+
+
+    <string-array name="real_animal_domestic">
+        <item>cat</item>
+        <item>cow</item>
+        <item>dog</item>
+        <item>donkey</item>
+        <item>duck</item>
+        <item>goat</item>
+        <item>goldfish</item>
+        <item>goose</item>
+        <item>hen</item>
+        <item>horse</item>
+        <item>mouse</item>
+        <item>mule</item>
+        <item>pig</item>
+        <item>pigeon</item>
+        <item>rabbit</item>
+        <item>rooster</item>
+        <item>sheep</item>
+        <item>turkey</item>
+    </string-array>
+
+    <string-array name="real_animal_domestic_arm">
+        <item>կատու</item>
+        <item>կով</item>
+        <item>շուն</item>
+        <item>ավանակ</item>
+        <item>բադ</item>
+        <item>այծ</item>
+        <item>ոսկե_ձուկ</item>
+        <item>սագ</item>
+        <item>հավ</item>
+        <item>ձի</item>
+        <item>մուկ</item>
+        <item>ավանակ</item>
+        <item>խոզ</item>
+        <item>աղավնի</item>
+        <item>ճագար</item>
+        <item>աքաղաղ</item>
+        <item>ոչխար</item>
+        <item>հդնկահավ</item>
+    </string-array>
+
+
+</resources>

@@ -1,0 +1,19 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/game_bc_three"
+    android:clickable="true"
+    android:paddingBottom="5dp"
+    android:paddingTop="8dp">
+
+    <ImageView
+        android:id="@+id/iv_background_play"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <learnlanguages.hk.com.entities.Game
+        android:id="@+id/game"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</RelativeLayout>

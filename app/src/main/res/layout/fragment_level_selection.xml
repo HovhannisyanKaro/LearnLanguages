@@ -1,0 +1,48 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/learn_background"
+    android:clickable="true">
+
+
+    <LinearLayout
+        android:layout_centerInParent="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/tv_easy"
+            android:layout_width="300dp"
+            android:layout_height="66dp"
+            android:background="@drawable/choise_one"
+
+            android:text="@string/easy"
+            android:gravity="center"
+            android:textColor="#fff"
+            android:textSize="26dp" />
+
+        <TextView
+            android:id="@+id/tv_middle"
+            android:gravity="center"
+            android:textColor="#fff"
+            android:textSize="26dp"
+            android:text="@string/middle"
+            android:layout_width="300dp"
+            android:layout_height="66dp"
+            android:background="@drawable/choise_one" />
+
+        <TextView
+            android:id="@+id/tv_hard"
+            android:gravity="center"
+            android:textColor="#fff"
+            android:textSize="26dp"
+            android:text="@string/hard"
+            android:layout_width="300dp"
+            android:layout_height="66dp"
+            android:background="@drawable/choise_one" />
+    </LinearLayout>
+</RelativeLayout>

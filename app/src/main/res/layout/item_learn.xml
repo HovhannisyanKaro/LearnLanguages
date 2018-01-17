@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:gravity="center"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_centerInParent="true"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:background="@drawable/c_i_orangutan"
+        android:id="@+id/iv_learn_image"
+        android:layout_marginBottom="@dimen/main_margin_half"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+
+    <RelativeLayout
+        android:id="@+id/rl_eName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <!--android:background="@drawable/shape_rounded"-->
+        <TextView
+            android:textSize="12sp"
+            android:textColor="@color/white"
+            android:textAllCaps="true"
+            android:id="@+id/tv_learn_ename"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:text=""
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <ImageView
+            android:visibility="gone"
+            android:padding="10dp"
+            android:src="@drawable/ic_volume"
+            android:background="@drawable/shape_circle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_pname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <!--android:background="@drawable/shape_rounded_blue"-->
+
+        <TextView
+            android:textSize="12sp"
+            android:textColor="@color/white"
+            android:id="@+id/tv_learn_pname"
+            android:textAllCaps="true"
+            android:layout_centerVertical="true"
+            android:gravity="right|center_vertical"
+            android:paddingRight="60dp"
+            android:text="asdasd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <ImageView
+            android:visibility="gone"
+            android:padding="10dp"
+            android:scaleX="-1"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/ic_volume"
+            android:background="@drawable/shape_circle_blue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+</LinearLayout>
