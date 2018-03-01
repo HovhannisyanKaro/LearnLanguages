@@ -1,5 +1,6 @@
 package learnlanguages.hk.com.entities;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -116,6 +117,8 @@ public class Game extends RelativeLayout {
     private LayoutInflater inflater;
     private Context context;
     Unbinder unbinder;
+
+    private Activity activity;
 
     private ImageView[] ivTypes2;
     private ImageView[] ivTypes3;
@@ -580,6 +583,7 @@ public class Game extends RelativeLayout {
             @Override
             public void onClick(View v) {
                 ViewController.getViewController().removeAllFragments();
+                getActivity().finish();
                 dialog.dismiss();
             }
         });
@@ -637,7 +641,7 @@ public class Game extends RelativeLayout {
     }
 
     @OnClick({R.id.btn_skip, R.id.btn_listen, R.id.ib_skip, R.id.ib_e_name, R.id.ib_p_name, R.id.ib_animal_sound})
-    public void onViewClicked(View view) {
+    public void onViewClicked(final View view) {
         boolean canTouch = DataController.getInstance().isCanTouch();
         switch (view.getId()) {
             case R.id.btn_skip:
@@ -646,54 +650,122 @@ public class Game extends RelativeLayout {
                 break;
             case R.id.btn_listen:
                 if (canTouch) {
-                    SoundHelper.getInstance().playTrack(rightAnimal.getAnimalVoice(), new OnPlayCompliteListener() {
+                    view.animate().scaleY(0.8f).scaleX(0.8f).withEndAction(new Runnable() {
                         @Override
-                        public void onComplite() {
+                        public void run() {
+                            getActivity().runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                   view.animate().scaleY(1f).scaleX(1f).start();
+                                    SoundHelper.getInstance().playTrack(rightAnimal.getAnimalVoice(), new OnPlayCompliteListener() {
+                                        @Override
+                                        public void onComplite() {
 
+                                        }
+                                    });
+                                }
+                            });
                         }
-                    });
+                    }).setDuration(150).start();
+
                 }
                 break;
             case R.id.ib_skip:
                 if (canTouch) {
-                    SoundHelper.getInstance().playTrack(R.raw.action_sound_skip, new OnPlayCompliteListener() {
+                    view.animate().scaleY(0.8f).scaleX(0.8f).withEndAction(new Runnable() {
                         @Override
-                        public void onComplite() {
-                            logicOfGame();
+                        public void run() {
+                            getActivity().runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    view.animate().scaleY(1f).scaleX(1f).start();
+                                    SoundHelper.getInstance().playTrack(R.raw.action_sound_skip, new OnPlayCompliteListener() {
+                                        @Override
+                                        public void onComplite() {
+                                            logicOfGame();
+                                        }
+                                    });
+                                }
+                            });
                         }
-                    });
+                    }).setDuration(150).start();
+
                 }
                 break;
             case R.id.ib_e_name:
                 if (canTouch) {
-                    SoundHelper.getInstance().playTrack(rightAnimal.geteVoice(), new OnPlayCompliteListener() {
+                    view.animate().scaleY(0.8f).scaleX(0.8f).withEndAction(new Runnable() {
                         @Override
-                        public void onComplite() {
+                        public void run() {
+                            getActivity().runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    view.animate().scaleY(1f).scaleX(1f).start();
+                                    SoundHelper.getInstance().playTrack(rightAnimal.geteVoice(), new OnPlayCompliteListener() {
+                                        @Override
+                                        public void onComplite() {
 
+                                        }
+                                    });
+                                }
+                            });
                         }
-                    });
+                    }).setDuration(150).start();
+
                 }
                 break;
             case R.id.ib_p_name:
                 if (canTouch) {
-                    SoundHelper.getInstance().playTrack(rightAnimal.getpVoice(), new OnPlayCompliteListener() {
+                    view.animate().scaleY(0.8f).scaleX(0.8f).withEndAction(new Runnable() {
                         @Override
-                        public void onComplite() {
+                        public void run() {
+                            getActivity().runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    view.animate().scaleY(1f).scaleX(1f).start();
+                                    SoundHelper.getInstance().playTrack(rightAnimal.getpVoice(), new OnPlayCompliteListener() {
+                                        @Override
+                                        public void onComplite() {
 
+                                        }
+                                    });
+                                }
+                            });
                         }
-                    });
+                    }).setDuration(150).start();
+
                 }
                 break;
             case R.id.ib_animal_sound:
                 if (canTouch) {
-                    SoundHelper.getInstance().playTrack(rightAnimal.getAnimalVoice(), new OnPlayCompliteListener() {
+                    view.animate().scaleY(0.8f).scaleX(0.8f).withEndAction(new Runnable() {
                         @Override
-                        public void onComplite() {
+                        public void run() {
+                            getActivity().runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    view.animate().scaleY(1f).scaleX(1f).start();
+                                    SoundHelper.getInstance().playTrack(rightAnimal.getAnimalVoice(), new OnPlayCompliteListener() {
+                                        @Override
+                                        public void onComplite() {
 
+                                        }
+                                    });
+                                }
+                            });
                         }
-                    });
+                    }).setDuration(150).start();
+
                 }
                 break;
         }
+    }
+
+    public Activity getActivity() {
+        return activity;
+    }
+
+    public void setActivity(Activity activity) {
+        this.activity = activity;
     }
 }

@@ -1,6 +1,7 @@
 package learnlanguages.hk.com.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
@@ -20,9 +21,14 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import learnlanguages.hk.com.activities.BubblesActivity;
+import learnlanguages.hk.com.activities.LearnActivity;
+import learnlanguages.hk.com.activities.MainActivity;
+import learnlanguages.hk.com.activities.WriteActivity;
 import learnlanguages.hk.com.controllers.DataController;
 import learnlanguages.hk.com.controllers.ViewController;
 import learnlanguages.hk.com.entities.Animal;
+import learnlanguages.hk.com.fragments.LevelSelectionFragment;
 import learnlanguages.hk.com.interfacies.Constants;
 import learnlanguages.hk.com.interfacies.OnPlayCompliteListener;
 import learnlanguages.hk.com.interfacies.RecyclerViewOnClickListener;
@@ -132,15 +138,37 @@ public class LearnPagerAdapter extends PagerAdapter {
 
         llEname.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                recyclerViewOnClickListener.itemClicked(view, position);
+            public void onClick(final View view) {
+                view.animate().scaleY(0.8f).scaleX(0.8f).withEndAction(new Runnable() {
+                    @Override
+                    public void run() {
+                        ((LearnActivity)mContext).runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                view.animate().scaleY(1f).scaleX(1f).start();
+                                recyclerViewOnClickListener.itemClicked(view, position);
+                            }
+                        });
+                    }
+                }).setDuration(100).start();
             }
         });
 
         llOname.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                recyclerViewOnClickListener.itemClicked(view, position);
+            public void onClick(final View view) {
+                view.animate().scaleY(0.8f).scaleX(0.8f).withEndAction(new Runnable() {
+                    @Override
+                    public void run() {
+                        ((LearnActivity)mContext).runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                view.animate().scaleY(1f).scaleX(1f).start();
+                                recyclerViewOnClickListener.itemClicked(view, position);
+                            }
+                        });
+                    }
+                }).setDuration(100).start();
             }
         });
 

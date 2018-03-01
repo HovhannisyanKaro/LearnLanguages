@@ -20,6 +20,7 @@ public class DataController {
     private ArrayList<Animal> domesticAnimals;
     private int level;
     private boolean canTouch = true;
+    private boolean isMuteMode = false;
 
     private DataController(){}
 
@@ -88,5 +89,13 @@ public class DataController {
 
     public void resetDataController(){
         dataController = null;
+    }
+
+    public boolean isMuteMode() {
+        return isMuteMode;
+    }
+
+    public void setMuteMode(boolean muteMode) {
+        isMuteMode = muteMode;
     }
 }

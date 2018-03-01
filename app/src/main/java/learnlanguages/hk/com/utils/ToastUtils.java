@@ -1,5 +1,6 @@
 package learnlanguages.hk.com.utils;
 
+import android.content.Context;
 import android.widget.Toast;
 
 import learnlanguages.hk.com.controllers.ViewController;
@@ -12,8 +13,8 @@ import learnlanguages.hk.com.controllers.ViewController;
 public class ToastUtils {
     private static final boolean isDebug = true;
 
-    public static void t(String message) {
+    public static void t(Context context, String message) {
         if (isDebug)
-            Toast.makeText(ViewController.getViewController().getContex(), message, Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
     }
 }

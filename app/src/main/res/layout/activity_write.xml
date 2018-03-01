@@ -8,84 +8,72 @@
     tools:context="learnlanguages.hk.com.activities.WriteActivity">
 
     <LinearLayout
-        android:orientation="vertical"
-        android:weightSum="10"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="10">
 
         <View
-            android:layout_weight="1"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"/>
-
-        <RelativeLayout
-            android:layout_weight="6"
-            android:src="@drawable/c_i_bat"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:background="@drawable/border_two" >
+            android:layout_weight="1" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="6"
+            android:background="@drawable/border_two"
+            android:src="@drawable/c_i_bat">
 
             <ImageView
                 android:id="@+id/iv_image_png"
-                android:layout_centerInParent="true"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true" />
 
         </RelativeLayout>
 
         <RelativeLayout
-            android:gravity="center"
-            android:layout_weight="3"
             android:layout_width="match_parent"
-            android:layout_height="0dp">
+            android:layout_height="0dp"
+            android:layout_weight="3"
+            android:gravity="center_horizontal">
 
             <LinearLayout
-                android:gravity="center"
-                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <TextView
-                    android:id="@+id/tv_answer"
-                    android:textColor="#535252"
-                    android:textSize="26sp"
-                    android:text="_ _ _ _   _ _ _ _"
-                    android:layout_marginBottom="16dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                android:layout_height="match_parent"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
 
                 <LinearLayout
+                    android:gravity="center"
                     android:orientation="horizontal"
-                    android:id="@+id/ll_words_container"
-                    android:gravity="center"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-
-
-
-                </LinearLayout>
+                    android:layout_marginTop="16dp"
+                    android:id="@+id/ll_answer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:textSize="26sp" />
 
                 <LinearLayout
-                    android:gravity="center"
+                    android:id="@+id/ll_words_container"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal"/>
 
-
-
-                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/ll_words_container2"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"/>
 
             </LinearLayout>
 
         </RelativeLayout>
 
     </LinearLayout>
-
-
-
-
-
-
 
 
 </RelativeLayout>

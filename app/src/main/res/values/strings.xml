@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Սովորում ենք անգլերեն</string>
+    <string name="app_name">Գուպի</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -15,6 +15,9 @@
     <string name="middle">Միջին</string>
     <string name="hard">Բարդ</string>
     <string name="congratulations">Շնորհավոր</string>
+    <string name="write">Գրել</string>
+    <string name="bubbles">Փուչիկներ</string>
+    <string name="puzzle">Փազլ</string>
 
 
     <string-array name="real_animal_whild">
@@ -61,7 +64,7 @@
 
     <string-array name="real_animal_whild_arm">
         <item>առյուծ</item>
-        <item>կարմիր_պանդա</item>
+        <item>կարմիր պանդա</item>
         <item>օրանգուտան</item>
         <item>կոալա</item>
         <item>աղվես</item>
@@ -70,7 +73,7 @@
         <item>Բիզոն</item>
         <item>Սև արջ</item>
         <item>վայրի խոզ</item>
-        <item>Չեթա</item>
+        <item>Հովազ</item>
         <item>շիմպանզե</item>
         <item>եղնիկ</item>
         <item>փիղ</item>
@@ -148,16 +151,16 @@
         <item>թունա</item>
         <item>մողես</item>
         <item>թրաձուկ</item>
-        <item>գծավոր_սղոցաձուկ</item>
+        <item>գծավոր սղոցաձուկ</item>
         <item>կատվաձուկ</item>
         <item>կաղամար</item>
         <item>ջրասամույր</item>
-        <item>կետանման_դելֆին</item>
+        <item>կետանման դելֆին</item>
         <item>սղոցաձուկ</item>
         <item>ալիգատոր</item>
-        <item>Կապույտ_կետ</item>
+        <item>Կապույտ կետ</item>
         <item>լոքո</item>
-        <item>ծաղրածու_ձուկ</item>
+        <item>ծաղրածու ձուկ</item>
         <item>կոբրա</item>
         <item>ծովախեցգետին</item>
         <item>կոկորդիլոս</item>
@@ -174,15 +177,15 @@
         <item>սալամանդեր</item>
         <item>ծովաձիուկ</item>
         <item>փոկ</item>
-        <item>ծովային_կրիա</item>
-        <item>ծովային_սուսեր</item>
+        <item>ծովային կրիա</item>
+        <item>ծովային սուսեր</item>
         <item>շնաձուկ</item>
-        <item>մանր_ծովախեցգետին</item>
+        <item>մանր ծովախեցգետին</item>
         <item>ծովաստղ</item>
         <item>դոդոշ</item>
         <item>կրիա</item>
         <item>ծովառյուծ</item>
-        <item>դեղին_ձուկ</item>
+        <item>դեղին ձուկ</item>
     </string-array>
 
 
@@ -255,7 +258,7 @@
         <item>աղավնի</item>
         <item>աքաղաղ</item>
         <item>ճայ</item>
-        <item>տատրակ</item>
+        <item>ճնճղուկ</item>
         <item>արագիլ</item>
         <item>կարապ</item>
         <item>գիշանգղ</item>
@@ -291,7 +294,7 @@
         <item>ավանակ</item>
         <item>բադ</item>
         <item>այծ</item>
-        <item>ոսկե_ձուկ</item>
+        <item>ոսկե ձուկ</item>
         <item>սագ</item>
         <item>հավ</item>
         <item>ձի</item>

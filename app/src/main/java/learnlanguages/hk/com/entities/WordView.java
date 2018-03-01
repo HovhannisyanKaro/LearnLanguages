@@ -10,8 +10,10 @@ import android.widget.TextView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import butterknife.Unbinder;
 import learnlanguages.hk.com.learnlanguages.R;
+import learnlanguages.hk.com.utils.ToastUtils;
 
 /**
  * Created by Hovhannisyan.Karo on 06.01.2018.
@@ -22,10 +24,10 @@ public class WordView extends RelativeLayout {
     @BindView(R.id.tv_word)
     TextView tvWord;
     @BindView(R.id.lw)
-    FrameLayout lw;
-    private LayoutInflater inflater;
+    RelativeLayout lw;
     private Context context;
     Unbinder unbinder;
+    private OnLetterClickListener onLetterClickListener;
 
     public WordView(Context context) {
         super(context);
@@ -41,13 +43,22 @@ public class WordView extends RelativeLayout {
         this.context = context;
         View view = LayoutInflater.from(context).inflate(R.layout.layout_word, this);
         unbinder = ButterKnife.bind(this, view);
+        lw.setOnClickListener(onClickListener);
+    }
 
-        lw.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
+    private View.OnClickListener onClickListener = new OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            onLetterClickListener.onLetterClick(getThis());
+        }
+    };
 
-            }
-        });
+    public void setOnLetterClickListener(OnLetterClickListener onLetterClickListener){
+        this.onLetterClickListener = onLetterClickListener;
+    }
+
+    private WordView getThis(){
+        return this;
     }
 
     public void setLetter(char letter) {
@@ -55,12 +66,16 @@ public class WordView extends RelativeLayout {
     }
 
     public char getLetter() {
-        return tvWord.getText().toString().toCharArray()[0];
+        return tvWord.getText().toString().charAt(0);
     }
 
     @Override
     protected void onDetachedFromWindow() {
         super.onDetachedFromWindow();
         unbinder.unbind();
+    }
+
+    public interface OnLetterClickListener{
+        void onLetterClick(WordView wordView);
     }
 }

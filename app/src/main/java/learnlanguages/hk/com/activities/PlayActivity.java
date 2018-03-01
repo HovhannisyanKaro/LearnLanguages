@@ -51,6 +51,7 @@ public class PlayActivity extends AppCompatActivity {
 
     private void init() {
         setBackground();
+        game.setActivity(PlayActivity.this);
     }
 
     private void setBackground() {

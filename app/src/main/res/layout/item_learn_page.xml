@@ -44,14 +44,14 @@
                 android:src="@drawable/ic_arrow" />
 
             <ImageView
-                android:visibility="invisible"
                 android:id="@+id/iv_go_left"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
-                android:src="@drawable/ic_arrow" />
+                android:src="@drawable/ic_arrow"
+                android:visibility="invisible" />
 
         </RelativeLayout>
 
@@ -80,10 +80,18 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
-                    android:text="asdasd"
+                    android:text=""
                     android:textAllCaps="true"
                     android:textColor="@color/white"
                     android:textSize="24sp" />
+
+                <ImageView
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="16dp"
+                    android:src="@drawable/usa" />
 
             </RelativeLayout>
 
@@ -103,14 +111,20 @@
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
                     android:gravity="center"
-                    android:text="asdasd"
+                    android:text=""
                     android:textAllCaps="true"
                     android:textColor="@color/white"
                     android:textSize="24sp" />
 
+                <ImageView
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="16dp"
+                    android:src="@drawable/armenia" />
+
             </RelativeLayout>
         </LinearLayout>
     </LinearLayout>
-
-
 </RelativeLayout>

@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="learnlanguages.hk.com.learnlanguages">
 
+    <uses-permission android:name="android.permission.VIBRATE" />
+
     <application
         android:name="learnlanguages.hk.com.app.MyApplication"
         android:allowBackup="true"
@@ -27,7 +29,11 @@
         <activity
             android:name="learnlanguages.hk.com.activities.LearnActivity"
             android:screenOrientation="portrait" />
-        <activity android:name="learnlanguages.hk.com.activities.WriteActivity"></activity>
+        <activity android:name="learnlanguages.hk.com.activities.WriteActivity" />
+        <activity android:name="learnlanguages.hk.com.activities.BubblesActivity" />
+        <activity android:name="learnlanguages.hk.com.activities.PuzzleActivity">
+
+        </activity>
     </application>
 
 </manifest>

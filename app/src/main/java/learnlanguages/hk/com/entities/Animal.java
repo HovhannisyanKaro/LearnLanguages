@@ -12,13 +12,15 @@ import learnlanguages.hk.com.utils.GeneralMetods;
  */
 
 public class Animal {
-    String eName;
-    String pName;
-    Uri eVoice;
-    Uri pVoice;
-    Drawable cImage;
-    Drawable aImage;
-    Uri animalVoice;
+    private String eName;
+    private String pName;
+    private Uri eVoice;
+    private Uri pVoice;
+    private Drawable cImage;
+    private Drawable aImage;
+    private Uri animalVoice;
+    private boolean hasBeen;
+
 
     public Animal(String eName, String pName, Uri eVoice, Uri pVoice, Drawable cImage, Drawable aImage, Uri animalVoice) {
         this.eName = eName;
@@ -50,6 +52,14 @@ public class Animal {
 
             return GeneralMetods.getSingleImageFromDrawable(Constants.KEYS.C + eName).get();
 
+    }
+
+    public boolean isHasBeen() {
+        return hasBeen;
+    }
+
+    public void setHasBeen(boolean hasBeen) {
+        this.hasBeen = hasBeen;
     }
 
     public Uri getAnimalVoice() {

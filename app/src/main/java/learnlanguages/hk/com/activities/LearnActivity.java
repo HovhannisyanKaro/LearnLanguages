@@ -1,5 +1,6 @@
 package learnlanguages.hk.com.activities;
 
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -16,6 +17,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import learnlanguages.hk.com.controllers.ViewController;
 import learnlanguages.hk.com.fragments.LearnFragment;
+import learnlanguages.hk.com.fragments.LevelSelectionFragment;
 import learnlanguages.hk.com.learnlanguages.R;
 import learnlanguages.hk.com.utils.SoundHelper;
 
@@ -81,24 +83,37 @@ public class LearnActivity extends AppCompatActivity {
     }
 
     @OnClick({R.id.rl_domestic, R.id.rl_sea, R.id.rl_whild, R.id.rl_birds})
-    public void onViewClicked(View view) {
-        switch (view.getId()) {
-            case R.id.rl_domestic:
-                SoundHelper.getInstance().stopPlayer();
-                ViewController.getViewController().addFragment(R.id.container, LearnFragment.newInstance(DOMESTIC));
-                break;
-            case R.id.rl_sea:
-                SoundHelper.getInstance().stopPlayer();
-                ViewController.getViewController().addFragment(R.id.container, LearnFragment.newInstance(AQUATIC));
-                break;
-            case R.id.rl_whild:
-                SoundHelper.getInstance().stopPlayer();
-                ViewController.getViewController().addFragment(R.id.container, LearnFragment.newInstance(WHILD));
-                break;
-            case R.id.rl_birds:
-                SoundHelper.getInstance().stopPlayer();
-                ViewController.getViewController().addFragment(R.id.container, LearnFragment.newInstance(BIRDS));
-                break;
-        }
+    public void onViewClicked(final View view) {
+
+        view.animate().scaleY(0.8f).scaleX(0.8f).withEndAction(new Runnable() {
+            @Override
+            public void run() {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        switch (view.getId()) {
+                            case R.id.rl_domestic:
+                                SoundHelper.getInstance().stopPlayer();
+                                ViewController.getViewController().addFragment(R.id.container, LearnFragment.newInstance(DOMESTIC));
+                                break;
+                            case R.id.rl_sea:
+                                SoundHelper.getInstance().stopPlayer();
+                                ViewController.getViewController().addFragment(R.id.container, LearnFragment.newInstance(AQUATIC));
+                                break;
+                            case R.id.rl_whild:
+                                SoundHelper.getInstance().stopPlayer();
+                                ViewController.getViewController().addFragment(R.id.container, LearnFragment.newInstance(WHILD));
+                                break;
+                            case R.id.rl_birds:
+                                SoundHelper.getInstance().stopPlayer();
+                                ViewController.getViewController().addFragment(R.id.container, LearnFragment.newInstance(BIRDS));
+                                break;
+                        }
+                        view.animate().scaleY(1f).scaleX(1f).start();
+                    }
+                });
+            }
+        }).setDuration(150).start();
+
     }
 }

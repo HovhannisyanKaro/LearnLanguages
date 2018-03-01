@@ -13,7 +13,11 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
+import learnlanguages.hk.com.activities.BubblesActivity;
+import learnlanguages.hk.com.activities.LearnActivity;
+import learnlanguages.hk.com.activities.MainActivity;
 import learnlanguages.hk.com.activities.PlayActivity;
+import learnlanguages.hk.com.activities.WriteActivity;
 import learnlanguages.hk.com.controllers.DataController;
 import learnlanguages.hk.com.controllers.ViewController;
 import learnlanguages.hk.com.interfacies.Constants;
@@ -58,21 +62,34 @@ public class LevelSelectionFragment extends Fragment {
 
 
     @OnClick({R.id.tv_easy, R.id.tv_middle, R.id.tv_hard})
-    public void onViewClicked(View view) {
-        switch (view.getId()) {
-            case R.id.tv_easy:
-                DataController.getInstance().setLevel(Constants.LEVELS.EASY);
+    public void onViewClicked(final View view) {
 
-                break;
-            case R.id.tv_middle:
-                DataController.getInstance().setLevel(Constants.LEVELS.MIDDLE);
+        view.animate().scaleY(0.8f).scaleX(0.8f).withEndAction(new Runnable() {
+            @Override
+            public void run() {
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        switch (view.getId()) {
+                            case R.id.tv_easy:
+                                DataController.getInstance().setLevel(Constants.LEVELS.EASY);
 
-                break;
-            case R.id.tv_hard:
-                DataController.getInstance().setLevel(Constants.LEVELS.HARD);
-                break;
-        }
-        startActivity(new Intent(ViewController.getViewController().getContex(), PlayActivity.class));
+                                break;
+                            case R.id.tv_middle:
+                                DataController.getInstance().setLevel(Constants.LEVELS.MIDDLE);
+
+                                break;
+                            case R.id.tv_hard:
+                                DataController.getInstance().setLevel(Constants.LEVELS.HARD);
+                                break;
+                        }
+                        startActivity(new Intent(ViewController.getViewController().getContex(), PlayActivity.class));
+                        view.animate().scaleY(1f).scaleX(1f).start();
+                    }
+                });
+            }
+        }).setDuration(150).start();
+
 
     }
 }

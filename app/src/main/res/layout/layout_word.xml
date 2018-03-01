@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:id="@+id/lw"
+    android:clickable="true"
     android:foreground="?android:attr/selectableItemBackground">
 
     <TextView xmlns:android="http://schemas.android.com/apk/res/android"
@@ -15,4 +16,4 @@
         android:textColor="@color/white"
         android:textSize="25sp"/>
 
-</FrameLayout>
+</RelativeLayout>

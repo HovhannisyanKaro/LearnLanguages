@@ -10,10 +10,13 @@ import android.view.WindowManager;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
+import learnlanguages.hk.com.controllers.DataController;
 import learnlanguages.hk.com.controllers.ViewController;
 import learnlanguages.hk.com.fragments.LevelSelectionFragment;
 import learnlanguages.hk.com.interfacies.OnPlayCompliteListener;
@@ -31,6 +34,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     TextView tvPlay;
     @BindView(R.id.cb_mute_unmute)
     CheckBox cbMuteUnmute;
+    @BindView(R.id.rl_write)
+    RelativeLayout rlWrite;
 
     {
         //TODO todolist
@@ -66,6 +71,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         ViewController.getViewController().setContex(this);
         ViewController.getViewController().setFragmentManager(getSupportFragmentManager());
         SoundHelper.getInstance().resumeTrack();
+        if (DataController.getInstance().isMuteMode()) {
+            SoundHelper.getInstance().mute();
+            cbMuteUnmute.setChecked(true);
+        } else {
+            SoundHelper.getInstance().unMute();
+            cbMuteUnmute.setChecked(false);
+        }
     }
 
 
@@ -81,10 +93,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         tvLearn.setTypeface(myTypeface);
     }
 
-    public void testClick(View view) {
-
-        startActivity(new Intent(this, LearnActivity.class));
-    }
 
     private void init() {
     }
@@ -93,16 +101,36 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         cbMuteUnmute.setOnCheckedChangeListener(muteUnmuteCheckedChangeListener);
     }
 
-    public void learnClick(View view) {
-        ViewController.getViewController().addFragment(R.id.fl_main_container, new LevelSelectionFragment());
 
+    public void onViewClicked(final View view) {
+
+        final int viewId = view.getId();
+        view.animate().scaleY(0.8f).scaleX(0.8f).withEndAction(new Runnable() {
+            @Override
+            public void run() {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (viewId == R.id.rl_domestic) {
+                            startActivity(new Intent(MainActivity.this, LearnActivity.class));
+
+                        } else if (viewId == R.id.rl_write) {
+                            startActivity(new Intent(MainActivity.this, WriteActivity.class));
+
+                        } else if (viewId == R.id.rl_play) {
+                            ViewController.getViewController().addFragment(R.id.fl_main_container, new LevelSelectionFragment());
+
+                        } else if (viewId == R.id.rl_bubbles) {
+                            startActivity(new Intent(MainActivity.this, BubblesActivity.class));
+                        } else if (viewId == R.id.rl_puzzle) {
+                            startActivity(new Intent(MainActivity.this, PuzzleActivity.class));
+                        }
+                        view.animate().scaleY(1f).scaleX(1f).start();
+                    }
+                });
+            }
+        }).setDuration(150).start();
     }
-
-    public void playClick(View view) {
-        ViewController.getViewController().addFragment(R.id.fl_main_container, new LevelSelectionFragment());
-
-    }
-
 
     private void initValuesDependsCartoonOrNot() {
         setBackground();
@@ -147,12 +175,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private CheckBox.OnCheckedChangeListener muteUnmuteCheckedChangeListener = new CompoundButton.OnCheckedChangeListener() {
         @Override
         public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-            if (b) {
-                SoundHelper.getInstance().mute();
-            } else {
-                SoundHelper.getInstance().unMute();
+            if (compoundButton.isPressed()) {
+                DataController.getInstance().setMuteMode(b);
+                if (b) {
+                    SoundHelper.getInstance().mute();
+                } else {
+                    SoundHelper.getInstance().unMute();
+                }
             }
         }
     };
-
 }
