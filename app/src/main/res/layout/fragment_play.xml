@@ -3,6 +3,8 @@
     android:layout_height="match_parent"
     android:background="@drawable/game_bc_three"
     android:clickable="true"
+    android:splitMotionEvents ="false"
+
     android:paddingBottom="5dp"
     android:paddingTop="8dp">
 

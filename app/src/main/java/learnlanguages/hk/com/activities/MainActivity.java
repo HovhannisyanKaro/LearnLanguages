@@ -19,9 +19,11 @@ import butterknife.OnClick;
 import learnlanguages.hk.com.controllers.DataController;
 import learnlanguages.hk.com.controllers.ViewController;
 import learnlanguages.hk.com.fragments.LevelSelectionFragment;
+import learnlanguages.hk.com.interfacies.Constants;
 import learnlanguages.hk.com.interfacies.OnPlayCompliteListener;
 import learnlanguages.hk.com.learnlanguages.R;
 import learnlanguages.hk.com.utils.LogUtils;
+import learnlanguages.hk.com.utils.PrefsUtils;
 import learnlanguages.hk.com.utils.SoundHelper;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -55,8 +57,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         initListeneres();
         initValuesDependsCartoonOrNot();
         initTextFonts();
+        playDefaultSound();
 
 
+    }
+
+    private void playDefaultSound(){
         SoundHelper.getInstance().playTrack(R.raw.sound_background, true, new OnPlayCompliteListener() {
             @Override
             public void onComplite() {
@@ -71,11 +77,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         ViewController.getViewController().setContex(this);
         ViewController.getViewController().setFragmentManager(getSupportFragmentManager());
         SoundHelper.getInstance().resumeTrack();
-        if (DataController.getInstance().isMuteMode()) {
-            SoundHelper.getInstance().mute();
+        if (PrefsUtils.getBooleanValue(MainActivity.this, Constants.SOUND_VALUE)) {
+            SoundHelper.getInstance().stopPlayer();
             cbMuteUnmute.setChecked(true);
         } else {
-            SoundHelper.getInstance().unMute();
+            playDefaultSound();
             cbMuteUnmute.setChecked(false);
         }
     }
@@ -176,11 +182,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         @Override
         public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
             if (compoundButton.isPressed()) {
-                DataController.getInstance().setMuteMode(b);
+                PrefsUtils.putBooleanValue(MainActivity.this, Constants.SOUND_VALUE, b);
                 if (b) {
-                    SoundHelper.getInstance().mute();
+                    SoundHelper.getInstance().stopPlayer();
                 } else {
-                    SoundHelper.getInstance().unMute();
+                    playDefaultSound();
                 }
             }
         }

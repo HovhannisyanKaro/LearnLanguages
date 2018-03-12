@@ -14,6 +14,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -91,6 +94,17 @@ public class LearnFragment extends Fragment implements RecyclerViewOnClickListen
 
     private void initListeners() {
         pager.addOnPageChangeListener(onPageChangeListener);
+        new Timer().schedule(new TimerTask() {
+            @Override
+            public void run() {
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        adapter.playCurrentAnimalVoic(0);
+                    }
+                });
+            }
+        }, 250);
     }
 
     private ViewPager.OnPageChangeListener onPageChangeListener = new ViewPager.OnPageChangeListener() {
@@ -183,6 +197,5 @@ public class LearnFragment extends Fragment implements RecyclerViewOnClickListen
     public void onDetach() {
         super.onDetach();
         SoundHelper.getInstance().stopPlayer();
-        SoundHelper.getInstance().replayBackgorund();
     }
 }

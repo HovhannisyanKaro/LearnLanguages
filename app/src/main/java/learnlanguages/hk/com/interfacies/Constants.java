@@ -15,6 +15,8 @@ public interface Constants {
     String BACKGROUND_LEARN_AQUATICS = "real_image_aquatics";
     String BACKGROUND_LEARN_NOT_AQUATICS = "real_image_not_aquatics";
 
+    String SOUND_VALUE = "sound_value";
+
      interface CATEGORY{
         int BIRDS = 1;
         int AQUATIC = 2;

@@ -6,6 +6,7 @@
     android:id="@+id/rl_root"
     android:background="@drawable/learn_background"
     android:layout_height="match_parent"
+    android:splitMotionEvents ="false"
     tools:context="learnlanguages.hk.com.activities.BubblesActivity">
 
 </RelativeLayout>

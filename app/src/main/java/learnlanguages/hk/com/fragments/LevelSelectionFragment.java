@@ -51,7 +51,6 @@ public class LevelSelectionFragment extends Fragment {
     public void onResume() {
         super.onResume();
         ViewController.getViewController().setLevelSelectionFragment(this);
-        SoundHelper.getInstance().replayBackgorund();
     }
 
     @Override

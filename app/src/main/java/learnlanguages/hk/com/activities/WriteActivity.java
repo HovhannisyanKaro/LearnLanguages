@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.os.Vibrator;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.AnimationUtils;
@@ -20,6 +21,7 @@ import java.util.Random;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import learnlanguages.hk.com.controllers.DataController;
 import learnlanguages.hk.com.controllers.ViewController;
 import learnlanguages.hk.com.entities.Animal;
@@ -38,10 +40,11 @@ public class WriteActivity extends AppCompatActivity {
     LinearLayout llAnswer;
     @BindView(R.id.ll_words_container2)
     LinearLayout llWordsContainer2;
+    @BindView(R.id.iv_repeat_name)
+    ImageView ivRepeatName;
 
     private Animal currAnimal;
     private ArrayList<Animal> allAnimals;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -163,18 +166,31 @@ public class WriteActivity extends AppCompatActivity {
         public void onLetterClick(WordView wordView) {
             char currLetter = wordView.getLetter();
             boolean isVibrate = true;
+
             for (int i = 0; i < currAnimal.geteName().toCharArray().length; i++) {
-                if (currLetter == currAnimal.geteName().toCharArray()[i]) {
-                    ((TextView) llAnswer.getChildAt(i)).setText(String.valueOf(currLetter));
-                    isVibrate = false;
+                if (llAnswer != null) {
+                    char currCharAtPosition = ((TextView) llAnswer.getChildAt(i)).getText().charAt(0);
+                    if (currCharAtPosition == '_') {
+                        if (currLetter == currAnimal.geteName().toCharArray()[i]) {
+                            ((TextView) llAnswer.getChildAt(i)).setText(String.valueOf(currLetter));
+                            isVibrate = false;
+                        }
+                        break;
+                    }
                 }
+
             }
             if (isVibrate) {
                 Vibrator vb = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-                vb.vibrate(100);
+                if (vb != null) {
+                    vb.vibrate(100);
+                }
             }
 
             if (checkIfWin()) {
+                ivRepeatName.animate().scaleX(0).scaleY(0).rotation(180).setDuration(250).start();
+                llWordsContainer.setVisibility(View.INVISIBLE);
+                llWordsContainer2.setVisibility(View.INVISIBLE);
                 ivImagePng.startAnimation(AnimationUtils.loadAnimation(WriteActivity.this, R.anim.anim_vibration));
                 SoundHelper.getInstance().playTrack(currAnimal.getAnimalVoice(), onWinnerPlayCompleteListener);
             }
@@ -192,6 +208,10 @@ public class WriteActivity extends AppCompatActivity {
         @Override
         public void onComplite() {
             initCurrentAnimal();
+            llWordsContainer.setVisibility(View.VISIBLE);
+            llWordsContainer2.setVisibility(View.VISIBLE);
+            ivRepeatName.animate().scaleX(1).scaleY(1).rotation(-360).setDuration(250).start();
+
         }
     };
 
@@ -213,5 +233,21 @@ public class WriteActivity extends AppCompatActivity {
         ViewController.getViewController().setWriteActivity(this);
         ViewController.getViewController().setFragmentManager(getSupportFragmentManager());
 
+    }
+
+    @OnClick(R.id.iv_repeat_name)
+    public void onViewClicked() {
+        ivRepeatName.animate().scaleY(0.8f).scaleX(0.8f).withEndAction(new Runnable() {
+            @Override
+            public void run() {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        ivRepeatName.animate().scaleY(1f).scaleX(1f).start();
+                        SoundHelper.getInstance().playTrack(currAnimal.geteVoice(), onPlayCompliteListener);
+                    }
+                });
+            }
+        }).setDuration(150).start();
     }
 }

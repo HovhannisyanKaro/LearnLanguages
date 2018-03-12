@@ -112,7 +112,6 @@ public class LearnPagerAdapter extends PagerAdapter {
         tvEName.setText(animalsData.get(position).geteName());
         tvArmName.setText(animalsData.get(position).getpName());
 
-
         ivGoRight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -172,6 +171,7 @@ public class LearnPagerAdapter extends PagerAdapter {
             }
         });
 
+
         container.addView(llLearn);
         return itemView;
     }
@@ -181,7 +181,6 @@ public class LearnPagerAdapter extends PagerAdapter {
         SoundHelper.getInstance().playTrack(animalsData.get(position).geteVoice(), onPlayCompliteListener);
 
         ivLearnPNG.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.anim_vibration));
-
 
         if (position>0){
             ivGoLeft.setVisibility(View.VISIBLE);

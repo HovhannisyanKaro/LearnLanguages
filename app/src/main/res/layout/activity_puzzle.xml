@@ -6,6 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingTop="16dp"
+    android:splitMotionEvents ="false"
+
     android:background="@drawable/learn_background"
     android:gravity="center_horizontal"
     tools:context="learnlanguages.hk.com.activities.PuzzleActivity">

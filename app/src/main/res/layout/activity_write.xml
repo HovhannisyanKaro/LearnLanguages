@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:splitMotionEvents ="false"
+
     android:background="@drawable/learn_background"
     tools:context="learnlanguages.hk.com.activities.WriteActivity">
 
@@ -74,6 +76,15 @@
         </RelativeLayout>
 
     </LinearLayout>
+
+    <ImageButton
+        android:background="@android:color/transparent"
+        android:id="@+id/iv_repeat_name"
+        android:layout_margin="8dp"
+        android:src="@drawable/usa"
+        android:layout_alignParentRight="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
 
 </RelativeLayout>
