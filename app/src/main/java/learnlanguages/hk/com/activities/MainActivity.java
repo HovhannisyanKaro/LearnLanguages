@@ -15,13 +15,13 @@ import android.widget.TextView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
-import learnlanguages.hk.com.controllers.DataController;
 import learnlanguages.hk.com.controllers.ViewController;
 import learnlanguages.hk.com.fragments.LevelSelectionFragment;
 import learnlanguages.hk.com.interfacies.Constants;
+import learnlanguages.hk.com.interfacies.OnAnimEndAction;
 import learnlanguages.hk.com.interfacies.OnPlayCompliteListener;
 import learnlanguages.hk.com.learnlanguages.R;
+import learnlanguages.hk.com.utils.AnimUtils;
 import learnlanguages.hk.com.utils.LogUtils;
 import learnlanguages.hk.com.utils.PrefsUtils;
 import learnlanguages.hk.com.utils.SoundHelper;
@@ -59,10 +59,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         initTextFonts();
         playDefaultSound();
 
-
     }
 
-    private void playDefaultSound(){
+    private void playDefaultSound() {
         SoundHelper.getInstance().playTrack(R.raw.sound_background, true, new OnPlayCompliteListener() {
             @Override
             public void onComplite() {
@@ -111,31 +110,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onViewClicked(final View view) {
 
         final int viewId = view.getId();
-        view.animate().scaleY(0.8f).scaleX(0.8f).withEndAction(new Runnable() {
+
+        AnimUtils.gupiButtonAnimate(view, new OnAnimEndAction() {
             @Override
-            public void run() {
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        if (viewId == R.id.rl_domestic) {
-                            startActivity(new Intent(MainActivity.this, LearnActivity.class));
-
-                        } else if (viewId == R.id.rl_write) {
-                            startActivity(new Intent(MainActivity.this, WriteActivity.class));
-
-                        } else if (viewId == R.id.rl_play) {
-                            ViewController.getViewController().addFragment(R.id.fl_main_container, new LevelSelectionFragment());
-
-                        } else if (viewId == R.id.rl_bubbles) {
-                            startActivity(new Intent(MainActivity.this, BubblesActivity.class));
-                        } else if (viewId == R.id.rl_puzzle) {
-                            startActivity(new Intent(MainActivity.this, PuzzleActivity.class));
-                        }
-                        view.animate().scaleY(1f).scaleX(1f).start();
-                    }
-                });
+            public void onEnd() {
+                if (viewId == R.id.rl_domestic) {
+                    startActivity(new Intent(MainActivity.this, LearnActivity.class));
+                } else if (viewId == R.id.rl_write) {
+                    startActivity(new Intent(MainActivity.this, WriteActivity.class));
+                } else if (viewId == R.id.rl_play) {
+                    ViewController.getViewController().addFragment(R.id.fl_main_container, new LevelSelectionFragment());
+                } else if (viewId == R.id.rl_bubbles) {
+                    startActivity(new Intent(MainActivity.this, BubblesActivity.class));
+                } else if (viewId == R.id.rl_puzzle) {
+                    startActivity(new Intent(MainActivity.this, PuzzleActivity.class));
+                }
             }
-        }).setDuration(150).start();
+        });
     }
 
     private void initValuesDependsCartoonOrNot() {
@@ -157,11 +148,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onBackPressed() {
         if (ViewController.getViewController().getFragmentManager().getBackStackEntryCount() > 0) {
-
             ViewController.getViewController().getFragmentManager().popBackStack();
         } else {
             moveTaskToBack(true);
-            System.exit(0);
+            startActivity(new Intent(MainActivity.this, PhoneMainActivity.class));
+            this.finish();
+//            System.exit(0);
         }
         LogUtils.d("onBackPressed", "onBackPressed");
     }
@@ -174,7 +166,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 System.exit(0);
             }
         });
-
     }
 
 
@@ -191,4 +182,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         }
     };
+
+
+
 }

@@ -10,4 +10,5 @@
     <color name="red">#f60808</color>
     <color name="main_background_color">#c5fdf3</color>
     <color name="write_answer_letter_color">#535252</color>
+    <color name="black">#000</color>
 </resources>

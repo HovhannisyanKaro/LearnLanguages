@@ -17,28 +17,30 @@ public interface Constants {
 
     String SOUND_VALUE = "sound_value";
 
-     interface CATEGORY{
+
+    interface CATEGORY {
         int BIRDS = 1;
         int AQUATIC = 2;
         int WHILD = 3;
         int DOMESTIC = 4;
+        int COLOR = 5;
     }
 
-    interface KEYS{
+    interface KEYS {
         String RI = "i_";
         String C = "c_i_";
     }
 
-    interface SOUND_TYPES{
+    interface SOUND_TYPES {
         int SOUND = 1;
         int E_SOUND = 2;
         int P_SOUND = 3;
     }
 
     interface LEVELS {
-       int EASY = 1;
-       int MIDDLE = 2;
-       int HARD = 3;
+        int EASY = 1;
+        int MIDDLE = 2;
+        int HARD = 3;
     }
 
     interface G_TYPES {

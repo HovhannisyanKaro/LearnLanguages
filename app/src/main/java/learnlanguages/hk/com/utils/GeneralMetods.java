@@ -9,7 +9,6 @@ import android.graphics.drawable.StateListDrawable;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 
-import learnlanguages.hk.com.controllers.DataController;
 import learnlanguages.hk.com.controllers.ViewController;
 import learnlanguages.hk.com.interfacies.Constants;
 import learnlanguages.hk.com.learnlanguages.R;

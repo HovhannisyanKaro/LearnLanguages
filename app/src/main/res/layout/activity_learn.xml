@@ -2,160 +2,208 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:splitMotionEvents ="false"
-
     android:layout_height="match_parent"
-    android:background="@drawable/learn_background"
+    android:splitMotionEvents="false"
+    android:padding="4dp"
     tools:context="learnlanguages.hk.com.activities.LearnActivity">
 
-
-    <LinearLayout
+    <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:padding="32dp"
-        android:weightSum="4">
+        android:background="@drawable/final_v14" />
 
-
-        <RelativeLayout
-            android:id="@+id/rl_domestic"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginBottom="16dp"
-            android:layout_weight="1"
-            android:background="@drawable/choise_one"
-            android:gravity="center_vertical"
-            android:padding="5dp">
-
-            <TextView
-                android:id="@+id/tv_domestic"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_centerVertical="true"
-                android:layout_toLeftOf="@+id/imageView"
-                android:layout_toStartOf="@+id/imageView"
-                android:gravity="center"
-                android:text="@string/domestic"
-                android:textColor="#fff"
-                android:textSize="26dp" />
-
-            <ImageView
-                android:layout_marginRight="16dp"
-                android:layout_centerVertical="true"
-                android:id="@+id/imageView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:src="@drawable/category_domestic" />
-        </RelativeLayout>
-
-
-        <RelativeLayout
-            android:id="@+id/rl_sea"
-
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-
-            android:layout_marginBottom="16dp"
-            android:layout_weight="1"
-            android:background="@drawable/choise_twoo"
-            android:gravity="center_vertical"
-            android:padding="5dp">
-
-            <ImageView
-                android:layout_marginLeft="16dp"
-                android:layout_centerVertical="true"
-                android:id="@+id/imageView2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/category_aquatic" />
-
-            <TextView
-                android:id="@+id/tv_sea"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentTop="true"
-                android:layout_toEndOf="@+id/imageView2"
-                android:layout_toRightOf="@+id/imageView2"
-                android:gravity="center"
-                android:text="@string/sea"
-                android:textColor="#fff"
-                android:textSize="26dp" />
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:id="@+id/rl_whild"
-
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginBottom="16dp"
-            android:layout_weight="1"
-            android:background="@drawable/choise_one"
-            android:gravity="center_vertical"
-            android:padding="5dp">
-
-            <TextView
-                android:id="@+id/tv_whild"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignBottom="@+id/imageView3"
-                android:layout_alignTop="@+id/imageView3"
-                android:layout_toLeftOf="@+id/imageView3"
-                android:layout_toStartOf="@+id/imageView3"
-                android:gravity="center"
-                android:text="@string/whild"
-                android:textColor="#fff"
-                android:textSize="26dp" />
-
-            <ImageView
-                android:layout_marginRight="16dp"
-                android:layout_centerVertical="true"
-                android:id="@+id/imageView3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:src="@drawable/category_wild" />
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:id="@+id/rl_birds"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginBottom="16dp"
-            android:layout_weight="1"
-            android:background="@drawable/choise_twoo"
-            android:gravity="center_vertical"
-            android:padding="5dp">
-
-            <ImageView
-                android:layout_marginLeft="16dp"
-                android:layout_centerVertical="true"
-                android:id="@+id/imageView4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/category_bird" />
-
-            <TextView
-                android:id="@+id/tv_birds"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignBottom="@+id/imageView4"
-                android:layout_alignTop="@+id/imageView4"
-                android:layout_toEndOf="@+id/imageView4"
-                android:layout_toRightOf="@+id/imageView4"
-                android:gravity="center"
-                android:text="@string/birds"
-                android:textColor="#fff"
-                android:textSize="26dp" />
-        </RelativeLayout>
-
-    </LinearLayout>
-
-    <FrameLayout
-        android:id="@+id/container"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_marginBottom="86dp"
+        android:layout_marginTop="50dp"
+        android:padding="50dp">
+
+
+        <LinearLayout
+            android:id="@+id/ll_main"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:weightSum="4">
+
+
+            <RelativeLayout
+                android:id="@+id/rl_domestic"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginBottom="16dp"
+                android:layout_weight="1"
+                android:background="@drawable/choise_one"
+                android:gravity="center_vertical"
+                android:padding="5dp">
+
+                <TextView
+                    android:id="@+id/tv_domestic"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@+id/imageView"
+                    android:layout_toStartOf="@+id/imageView"
+                    android:gravity="center"
+                    android:text="@string/domestic"
+                    android:textColor="#fff"
+                    android:textSize="26dp" />
+
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="16dp"
+                    android:src="@drawable/category_domestic" />
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:id="@+id/rl_sea"
+
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+
+                android:layout_marginBottom="16dp"
+                android:layout_weight="1"
+                android:background="@drawable/choise_twoo"
+                android:gravity="center_vertical"
+                android:padding="5dp">
+
+                <ImageView
+                    android:id="@+id/imageView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="16dp"
+                    android:src="@drawable/category_aquatic" />
+
+                <TextView
+                    android:id="@+id/tv_sea"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_toEndOf="@+id/imageView2"
+                    android:layout_toRightOf="@+id/imageView2"
+                    android:gravity="center"
+                    android:text="@string/sea"
+                    android:textColor="#fff"
+                    android:textSize="26dp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_whild"
+
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginBottom="16dp"
+                android:layout_weight="1"
+                android:background="@drawable/choise_one"
+                android:gravity="center_vertical"
+                android:padding="5dp">
+
+                <TextView
+                    android:id="@+id/tv_whild"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/imageView3"
+                    android:layout_alignTop="@+id/imageView3"
+                    android:layout_toLeftOf="@+id/imageView3"
+                    android:layout_toStartOf="@+id/imageView3"
+                    android:gravity="center"
+                    android:text="@string/whild"
+                    android:textColor="#fff"
+                    android:textSize="26dp" />
+
+                <ImageView
+                    android:id="@+id/imageView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="16dp"
+                    android:src="@drawable/category_wild" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_birds"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginBottom="16dp"
+                android:layout_weight="1"
+                android:background="@drawable/choise_twoo"
+                android:gravity="center_vertical"
+                android:padding="5dp">
+
+                <ImageView
+                    android:id="@+id/imageView4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="16dp"
+                    android:src="@drawable/category_bird" />
+
+                <TextView
+                    android:id="@+id/tv_birds"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/imageView4"
+                    android:layout_alignTop="@+id/imageView4"
+                    android:layout_toEndOf="@+id/imageView4"
+                    android:layout_toRightOf="@+id/imageView4"
+                    android:gravity="center"
+                    android:text="@string/birds"
+                    android:textColor="#fff"
+                    android:textSize="26dp" />
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:id="@+id/rl_colors"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginBottom="16dp"
+                android:layout_weight="1"
+                android:background="@drawable/choise_one"
+                android:gravity="center_vertical"
+                android:padding="5dp"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/tv_colors"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/imageView5"
+                    android:layout_alignTop="@+id/imageView5"
+                    android:layout_toLeftOf="@+id/imageView5"
+                    android:layout_toStartOf="@+id/imageView5"
+                    android:gravity="center"
+                    android:text="@string/colors"
+                    android:textColor="#fff"
+                    android:textSize="26dp" />
+
+                <ImageView
+                    android:id="@+id/imageView5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="16dp"
+                    android:src="@drawable/category_colors" />
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <FrameLayout
+            android:id="@+id/container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </RelativeLayout>
 
 </RelativeLayout>

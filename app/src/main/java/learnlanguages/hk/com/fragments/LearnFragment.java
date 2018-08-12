@@ -1,8 +1,6 @@
 package learnlanguages.hk.com.fragments;
 
 
-import android.graphics.Bitmap;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -11,8 +9,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
-
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -20,20 +16,20 @@ import java.util.TimerTask;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import learnlanguages.hk.com.activities.LearnActivity;
 import learnlanguages.hk.com.adapters.LearnPagerAdapter;
-import learnlanguages.hk.com.controllers.DataController;
 import learnlanguages.hk.com.controllers.ViewController;
-import learnlanguages.hk.com.entities.Animal;
+import learnlanguages.hk.com.entities.LearnModel;
 import learnlanguages.hk.com.interfacies.Constants;
+import learnlanguages.hk.com.interfacies.OnAnimEndAction;
 import learnlanguages.hk.com.interfacies.OnPlayCompliteListener;
 import learnlanguages.hk.com.interfacies.RecyclerViewOnClickListener;
 import learnlanguages.hk.com.learnlanguages.R;
-import learnlanguages.hk.com.utils.GeneralMetods;
+import learnlanguages.hk.com.new_version.controllers.DataController_;
+import learnlanguages.hk.com.utils.AnimUtils;
 import learnlanguages.hk.com.utils.SoundHelper;
 
-
 public class LearnFragment extends Fragment implements RecyclerViewOnClickListener {
-
 
     @BindView(R.id.iv_background_learn)
     ImageView ivBackgroundLearn;
@@ -42,9 +38,7 @@ public class LearnFragment extends Fragment implements RecyclerViewOnClickListen
     ViewPager pager;
 
     private int categoryId;
-
     private LearnPagerAdapter adapter;
-
 
     public LearnFragment() {
 
@@ -62,7 +56,11 @@ public class LearnFragment extends Fragment implements RecyclerViewOnClickListen
     public void onResume() {
         super.onResume();
         ViewController.getViewController().setLearnFragment(this);
+        if (getActivity() instanceof LearnActivity) {
+            ((LearnActivity) getActivity()).setCategoryViewVisibility(false);
+        }
     }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -78,7 +76,7 @@ public class LearnFragment extends Fragment implements RecyclerViewOnClickListen
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         categoryId = getArguments().getInt("category_id");
-        DataController.getInstance().setCategory(categoryId);
+        DataController_.getInstance().setCategory(categoryId);
     }
 
     private void init() {
@@ -90,7 +88,6 @@ public class LearnFragment extends Fragment implements RecyclerViewOnClickListen
         adapter.setData(categoryId);
         pager.setAdapter(adapter);
     }
-
 
     private void initListeners() {
         pager.addOnPageChangeListener(onPageChangeListener);
@@ -135,28 +132,42 @@ public class LearnFragment extends Fragment implements RecyclerViewOnClickListen
         int viewId = view.getId();
 
         if (viewId == R.id.iv_go_right) {
-            if (pager.getCurrentItem() < adapter.getCount()-1){
-                pager.setCurrentItem(pager.getCurrentItem()+1);
-            }
-        } else if(viewId == R.id.iv_go_left) {
-            if (pager.getCurrentItem() >0){
-                pager.setCurrentItem(pager.getCurrentItem()-1);
-            }
-        }else{
-            Animal currentAnimal = null;
-            int category = DataController.getInstance().getCategory();
+            AnimUtils.gupiButtonAnimate(view, new OnAnimEndAction() {
+                @Override
+                public void onEnd() {
+                    if (pager.getCurrentItem() < adapter.getCount() - 1) {
+                        pager.setCurrentItem(pager.getCurrentItem() + 1);
+                    }
+                }
+            });
+
+        } else if (viewId == R.id.iv_go_left) {
+            AnimUtils.gupiButtonAnimate(view, new OnAnimEndAction() {
+                @Override
+                public void onEnd() {
+                    if (pager.getCurrentItem() > 0) {
+                        pager.setCurrentItem(pager.getCurrentItem() - 1);
+                    }
+                }
+            });
+        } else {
+            LearnModel currentAnimal = null;
+            int category = DataController_.getInstance().getCategory();
             switch (category) {
                 case Constants.CATEGORY.BIRDS:
-                    currentAnimal = DataController.getInstance().getBirdAnimals().get(position);
+                    currentAnimal = DataController_.getInstance().getLearnModelBirds().get(position);
                     break;
                 case Constants.CATEGORY.AQUATIC:
-                    currentAnimal = DataController.getInstance().getAquaticAnimals().get(position);
+                    currentAnimal = DataController_.getInstance().getLearnModelSea().get(position);
                     break;
                 case Constants.CATEGORY.WHILD:
-                    currentAnimal = DataController.getInstance().getWhildAnimals().get(position);
+                    currentAnimal = DataController_.getInstance().getLearnModelWild().get(position);
                     break;
                 case Constants.CATEGORY.DOMESTIC:
-                    currentAnimal = DataController.getInstance().getDomesticAnimals().get(position);
+                    currentAnimal = DataController_.getInstance().getLearnModelDomestic().get(position);
+                    break;
+                case Constants.CATEGORY.COLOR:
+                    currentAnimal = DataController_.getInstance().getLearnModelColors().get(position);
                     break;
                 default:
                     break;
@@ -164,28 +175,21 @@ public class LearnFragment extends Fragment implements RecyclerViewOnClickListen
 
             switch (view.getId()) {
                 case R.id.iv_learn_image:
-                    SoundHelper.getInstance().playTrack(currentAnimal.getAnimalVoice(), new OnPlayCompliteListener() {
+                    final LearnModel finalCurrentAnimal = currentAnimal;
+                    AnimUtils.gupiAnimalAnimate(view, new OnAnimEndAction() {
                         @Override
-                        public void onComplite() {
+                        public void onEnd() {
+                            if (finalCurrentAnimal.getAnimalVoice(getActivity()) != 0)
+                                SoundHelper.getInstance().playTrack(finalCurrentAnimal.getAnimalVoice(getActivity()), new PlayCompleteListenerEmpty());
 
                         }
                     });
                     break;
                 case R.id.rl_eName:
-                    SoundHelper.getInstance().playTrack(currentAnimal.geteVoice(), new OnPlayCompliteListener() {
-                        @Override
-                        public void onComplite() {
-
-                        }
-                    });
+                    SoundHelper.getInstance().playTrack(currentAnimal.getEnVoice(getActivity()), new PlayCompleteListenerEmpty());
                     break;
                 case R.id.rl_pname:
-                    SoundHelper.getInstance().playTrack(currentAnimal.getpVoice(), new OnPlayCompliteListener() {
-                        @Override
-                        public void onComplite() {
-
-                        }
-                    });
+                    SoundHelper.getInstance().playTrack(currentAnimal.getArmVoice(getActivity()), new PlayCompleteListenerEmpty());
                     break;
                 default:
                     break;
@@ -193,9 +197,20 @@ public class LearnFragment extends Fragment implements RecyclerViewOnClickListen
         }
     }
 
+    private class PlayCompleteListenerEmpty implements OnPlayCompliteListener {
+
+        @Override
+        public void onComplite() {
+
+        }
+    }
+
     @Override
     public void onDetach() {
         super.onDetach();
         SoundHelper.getInstance().stopPlayer();
+        if (getActivity() instanceof LearnActivity) {
+            ((LearnActivity) getActivity()).setCategoryViewVisibility(true);
+        }
     }
 }

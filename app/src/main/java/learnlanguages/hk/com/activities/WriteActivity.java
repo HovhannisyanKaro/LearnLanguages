@@ -22,12 +22,14 @@ import java.util.Random;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import learnlanguages.hk.com.controllers.DataController;
 import learnlanguages.hk.com.controllers.ViewController;
-import learnlanguages.hk.com.entities.Animal;
+import learnlanguages.hk.com.entities.LearnModel;
 import learnlanguages.hk.com.entities.WordView;
+import learnlanguages.hk.com.interfacies.OnAnimEndAction;
 import learnlanguages.hk.com.interfacies.OnPlayCompliteListener;
 import learnlanguages.hk.com.learnlanguages.R;
+import learnlanguages.hk.com.new_version.controllers.DataController_;
+import learnlanguages.hk.com.utils.AnimUtils;
 import learnlanguages.hk.com.utils.SoundHelper;
 
 public class WriteActivity extends AppCompatActivity {
@@ -43,8 +45,8 @@ public class WriteActivity extends AppCompatActivity {
     @BindView(R.id.iv_repeat_name)
     ImageView ivRepeatName;
 
-    private Animal currAnimal;
-    private ArrayList<Animal> allAnimals;
+    private LearnModel currAnimal;
+    private ArrayList<LearnModel> allAnimals;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,14 +66,11 @@ public class WriteActivity extends AppCompatActivity {
 
     private void getAllAnimalsAsOneList() {
         allAnimals = new ArrayList<>();
-        allAnimals.addAll(DataController.getInstance().getWhildAnimals());
-        allAnimals.addAll(DataController.getInstance().getDomesticAnimals());
-        allAnimals.addAll(DataController.getInstance().getBirdAnimals());
-        allAnimals.addAll(DataController.getInstance().getAquaticAnimals());
+        allAnimals = DataController_.getInstance().getLearnModelAll();
     }
 
     private void getNotRepeatingAnimal() {
-        ArrayList<Animal> data = allAnimals;
+        ArrayList<LearnModel> data = allAnimals;
         do {
             currAnimal = data.get(new Random().nextInt(data.size() - 1));
         }
@@ -87,14 +86,14 @@ public class WriteActivity extends AppCompatActivity {
 
         getNotRepeatingAnimal();
 
-        ivImagePng.setImageDrawable(currAnimal.getImage());
-        SoundHelper.getInstance().playTrack(currAnimal.geteVoice(), onPlayCompliteListener);
+        ivImagePng.setImageResource(currAnimal.getImage(this));
+        SoundHelper.getInstance().playTrack(currAnimal.getEnVoice(this), onPlayCompliteListener);
         setWordViews(currAnimal);
         setAnswerLetters();
     }
 
-    private void setWordViews(Animal currAnimal) {
-        char[] nameWordsArr = currAnimal.geteName().toCharArray();
+    private void setWordViews(LearnModel currAnimal) {
+        char[] nameWordsArr = currAnimal.getEnName().toCharArray();
 
         Character[] answerVariants = new Character[nameWordsArr.length + (nameWordsArr.length / 3)];
 
@@ -145,13 +144,13 @@ public class WriteActivity extends AppCompatActivity {
     }
 
     private void setAnswerLetters() {
-        for (int i = 0; i < currAnimal.geteName().length(); i++) {
+        for (int i = 0; i < currAnimal.getEnName().length(); i++) {
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
             params.setMargins(8, 8, 8, 8);
             TextView tv = new TextView(this);
             tv.setLayoutParams(params);
             tv.setTextSize(24);
-            if (currAnimal.geteName().charAt(i) == '_')
+            if (currAnimal.getEnName().charAt(i) == '_')
                 tv.setText(" ");
             else
                 tv.setText("_");
@@ -167,11 +166,11 @@ public class WriteActivity extends AppCompatActivity {
             char currLetter = wordView.getLetter();
             boolean isVibrate = true;
 
-            for (int i = 0; i < currAnimal.geteName().toCharArray().length; i++) {
+            for (int i = 0; i < currAnimal.getEnName().toCharArray().length; i++) {
                 if (llAnswer != null) {
                     char currCharAtPosition = ((TextView) llAnswer.getChildAt(i)).getText().charAt(0);
                     if (currCharAtPosition == '_') {
-                        if (currLetter == currAnimal.geteName().toCharArray()[i]) {
+                        if (currLetter == currAnimal.getEnName().toCharArray()[i]) {
                             ((TextView) llAnswer.getChildAt(i)).setText(String.valueOf(currLetter));
                             isVibrate = false;
                         }
@@ -191,8 +190,13 @@ public class WriteActivity extends AppCompatActivity {
                 ivRepeatName.animate().scaleX(0).scaleY(0).rotation(180).setDuration(250).start();
                 llWordsContainer.setVisibility(View.INVISIBLE);
                 llWordsContainer2.setVisibility(View.INVISIBLE);
-                ivImagePng.startAnimation(AnimationUtils.loadAnimation(WriteActivity.this, R.anim.anim_vibration));
-                SoundHelper.getInstance().playTrack(currAnimal.getAnimalVoice(), onWinnerPlayCompleteListener);
+                AnimUtils.gupiAnimalAnimate(ivImagePng);
+//                ivImagePng.startAnimation(AnimationUtils.loadAnimation(WriteActivity.this, R.anim.anim_vibration));
+                if (currAnimal.getAnimalVoice(WriteActivity.this) != 0) {
+                    SoundHelper.getInstance().playTrack(currAnimal.getAnimalVoice(WriteActivity.this), onWinnerPlayCompleteListener);
+                } else {
+                    SoundHelper.getInstance().playTrack(R.raw.action_sound_right_answer, onWinnerPlayCompleteListener);
+                }
             }
         }
     };
@@ -237,17 +241,12 @@ public class WriteActivity extends AppCompatActivity {
 
     @OnClick(R.id.iv_repeat_name)
     public void onViewClicked() {
-        ivRepeatName.animate().scaleY(0.8f).scaleX(0.8f).withEndAction(new Runnable() {
+        AnimUtils.gupiButtonAnimate(ivRepeatName, new OnAnimEndAction() {
             @Override
-            public void run() {
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        ivRepeatName.animate().scaleY(1f).scaleX(1f).start();
-                        SoundHelper.getInstance().playTrack(currAnimal.geteVoice(), onPlayCompliteListener);
-                    }
-                });
+            public void onEnd() {
+                SoundHelper.getInstance().playTrack(currAnimal.getEnVoice(WriteActivity.this), onPlayCompliteListener);
+
             }
-        }).setDuration(150).start();
+        });
     }
 }

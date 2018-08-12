@@ -12,6 +12,19 @@
         <item name="android:layout_margin">@dimen/main_margin_half</item>
         <item name="android:src">@drawable/star</item>
         <item name="android:visibility">gone</item>
+        <item name="android:layout_width">20dp</item>
+        <item name="android:layout_height">20dp</item>
+    </style>
+
+    <style name="PhoneNumberStyle">
+        <item name="android:layout_margin">2dp</item>
+        <item name="android:onClick">onNumberClicked</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">36sp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@drawable/shape_number</item>
+        <item name="android:layout_width">66dp</item>
+        <item name="android:layout_height">66dp</item>
     </style>
 
 </resources>

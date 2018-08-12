@@ -4,87 +4,101 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:splitMotionEvents ="false"
-
-    android:background="@drawable/learn_background"
+    android:splitMotionEvents="false"
+    android:padding="4dp"
     tools:context="learnlanguages.hk.com.activities.WriteActivity">
 
-    <LinearLayout
+    <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:weightSum="10">
+        android:background="@drawable/final_v14" />
 
-        <View
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="1dp"
+        android:layout_marginTop="50dp"
+        android:paddingRight="50dp"
+        android:paddingLeft="50dp"
+        android:paddingTop="50dp"
+        android:paddingBottom="25dp">
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:weightSum="10">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="6"
-            android:background="@drawable/border_two"
-            android:src="@drawable/c_i_bat">
-
-            <ImageView
-                android:id="@+id/iv_image_png"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true" />
-
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="3"
-            android:gravity="center_horizontal">
-
-            <LinearLayout
+            <View
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center_horizontal"
-                android:orientation="vertical">
+                android:layout_height="0dp"
+                android:layout_weight="1" />
 
-                <LinearLayout
-                    android:gravity="center"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="16dp"
-                    android:id="@+id/ll_answer"
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="4"
+                android:background="@drawable/border_two"
+                android:src="@drawable/c_i_bat">
+
+                <ImageView
+                    android:id="@+id/iv_image_png"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="16dp"
-                    android:textSize="26sp" />
+                    android:layout_centerInParent="true" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="3"
+                android:gravity="center_horizontal">
 
                 <LinearLayout
-                    android:id="@+id/ll_words_container"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:orientation="horizontal"/>
+                    android:layout_height="match_parent"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
 
-                <LinearLayout
-                    android:id="@+id/ll_words_container2"
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"/>
+                    <LinearLayout
+                        android:id="@+id/ll_answer"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        android:layout_marginTop="16dp"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:textSize="26sp" />
 
-            </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/ll_words_container"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="horizontal" />
 
-        </RelativeLayout>
+                    <LinearLayout
+                        android:id="@+id/ll_words_container2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="horizontal" />
 
-    </LinearLayout>
+                </LinearLayout>
 
-    <ImageButton
-        android:background="@android:color/transparent"
-        android:id="@+id/iv_repeat_name"
-        android:layout_margin="8dp"
-        android:src="@drawable/usa"
-        android:layout_alignParentRight="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+            </RelativeLayout>
 
+        </LinearLayout>
 
+        <ImageButton
+            android:id="@+id/iv_repeat_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_margin="8dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/usa" />
+
+    </RelativeLayout>
 </RelativeLayout>

@@ -6,9 +6,7 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:splitMotionEvents ="false"
-
     tools:context="learnlanguages.hk.com.activities.SplashScreenActivity">
-
 
     <ImageView
         android:layout_width="match_parent"
@@ -26,8 +24,6 @@
         app:duration="4900"
         app:per="5"
         tools:context="com.luolc.emojirain.sample.MainActivity"/>
-
-
 
     <TextView
         android:id="@+id/app_title"

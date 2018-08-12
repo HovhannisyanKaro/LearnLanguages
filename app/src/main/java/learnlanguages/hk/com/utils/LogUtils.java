@@ -14,4 +14,9 @@ public class LogUtils {
         if (isDebug)
             Log.d(LOG + " " + tag, message);
     }
+
+    public static void d( String message){
+        if (isDebug)
+            Log.d(LOG , message);
+    }
 }

@@ -3,11 +3,9 @@ package learnlanguages.hk.com.entities;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
-import android.support.v7.app.AlertDialog;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,11 +23,11 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
-import learnlanguages.hk.com.controllers.DataController;
 import learnlanguages.hk.com.controllers.ViewController;
 import learnlanguages.hk.com.interfacies.Constants;
 import learnlanguages.hk.com.interfacies.OnPlayCompliteListener;
 import learnlanguages.hk.com.learnlanguages.R;
+import learnlanguages.hk.com.new_version.controllers.DataController_;
 import learnlanguages.hk.com.utils.SoundHelper;
 
 /**
@@ -129,9 +127,9 @@ public class Game extends RelativeLayout {
 
     private LinearLayout[] layouts;
 
-    private ArrayList<Animal> allAnimals;
-    private ArrayList<Animal> rightAnswers;
-    private Animal rightAnimal = null;
+    private ArrayList<LearnModel> allAnimals;
+    private ArrayList<LearnModel> rightAnswers;
+    private LearnModel rightAnimal = null;
     private int gameType = 2;
 
     private int levelsCountMiddle = 0;
@@ -172,7 +170,7 @@ public class Game extends RelativeLayout {
             ivTypes2[i].setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if (DataController.getInstance().isCanTouch())
+                    if (DataController_.getInstance().isCanTouch())
                         checkAnswer(ivTypes2[finalI].getDrawable());
                 }
             });
@@ -185,7 +183,7 @@ public class Game extends RelativeLayout {
             ivTypes3[i].setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if (DataController.getInstance().isCanTouch())
+                    if (DataController_.getInstance().isCanTouch())
                         checkAnswer(ivTypes3[finalI].getDrawable());
 
                 }
@@ -199,7 +197,7 @@ public class Game extends RelativeLayout {
             ivTypes4[i].setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if (DataController.getInstance().isCanTouch())
+                    if (DataController_.getInstance().isCanTouch())
                         checkAnswer(ivTypes4[finalI].getDrawable());
 
                 }
@@ -214,7 +212,7 @@ public class Game extends RelativeLayout {
             ivTypes5[i].setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if (DataController.getInstance().isCanTouch())
+                    if (DataController_.getInstance().isCanTouch())
                         checkAnswer(ivTypes5[finalI].getDrawable());
 
                 }
@@ -229,7 +227,7 @@ public class Game extends RelativeLayout {
             ivTypes6[i].setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if (DataController.getInstance().isCanTouch())
+                    if (DataController_.getInstance().isCanTouch())
                         checkAnswer(ivTypes6[finalI].getDrawable());
                 }
             });
@@ -261,7 +259,7 @@ public class Game extends RelativeLayout {
     }
 
     private void setVisibilityOFStars() {
-        int level = DataController.getInstance().getLevel();
+        int level = DataController_.getInstance().getLevel();
         if (level == Constants.LEVELS.EASY) {
             ivStars[0].setVisibility(VISIBLE);
         } else if (level == Constants.LEVELS.MIDDLE) {
@@ -278,10 +276,7 @@ public class Game extends RelativeLayout {
 
     private void getAllAnimalsAsOneList() {
         allAnimals = new ArrayList<>();
-        allAnimals.addAll(DataController.getInstance().getWhildAnimals());
-        allAnimals.addAll(DataController.getInstance().getDomesticAnimals());
-        allAnimals.addAll(DataController.getInstance().getBirdAnimals());
-        allAnimals.addAll(DataController.getInstance().getAquaticAnimals());
+        allAnimals = DataController_.getInstance().getLearnModelAll();
     }
 
     private void logicOfGame() {
@@ -301,7 +296,7 @@ public class Game extends RelativeLayout {
     private void logic(int type) {
         setVisibilityOfType(type);
         int rightAnswerIndex = getRandomInt(type);
-        ArrayList<Animal> removedAnimals = null;
+        ArrayList<LearnModel> removedAnimals = null;
         removedAnimals = new ArrayList<>();
         removedAnimals.addAll(allAnimals);
         ImageView[] arrayOfImageView = null;
@@ -323,9 +318,9 @@ public class Game extends RelativeLayout {
                 break;
         }
         for (int i = 0; i < type; i++) {
-            Animal animal = removedAnimals.get(getRandomInt(removedAnimals.size()));
+            LearnModel animal = removedAnimals.get(getRandomInt(removedAnimals.size()));
 
-                arrayOfImageView[i].setImageDrawable(animal.getImage());
+            arrayOfImageView[i].setImageResource(animal.getImage(context));
 
             if (i == rightAnswerIndex) {
                 rightAnimal = animal;
@@ -333,7 +328,7 @@ public class Game extends RelativeLayout {
             removedAnimals.remove(animal);
             removedAnimals.trimToSize();
         }
-        SoundHelper.getInstance().playTrack(rightAnimal.geteVoice(), new OnPlayCompliteListener() {
+        SoundHelper.getInstance().playTrack(rightAnimal.getEnVoice(context), new OnPlayCompliteListener() {
             @Override
             public void onComplite() {
 
@@ -342,9 +337,9 @@ public class Game extends RelativeLayout {
     }
 
     private void checkAnswer(Drawable answeredDrawable) {
-        int gameLevel = DataController.getInstance().getLevel();
+        int gameLevel = DataController_.getInstance().getLevel();
         if (gameLevel == Constants.LEVELS.EASY) {
-            if (answeredDrawable.getConstantState().equals(rightAnimal.getImage().getConstantState())) {
+            if (answeredDrawable.getConstantState().equals(rightAnimal.getImageDrawable(context).getConstantState())) {
                 if (gameType < 6) {
                     ivStars[0].setImageResource(R.drawable.star_win);
                     SoundHelper.getInstance().playTrack(R.raw.action_sound_level_victory, new OnPlayCompliteListener() {
@@ -379,7 +374,7 @@ public class Game extends RelativeLayout {
 
             }
         } else if (gameLevel == Constants.LEVELS.MIDDLE) {
-            if (answeredDrawable.getConstantState().equals(rightAnimal.getImage().getConstantState())) {
+            if (answeredDrawable.getConstantState().equals(rightAnimal.getImageDrawable(context).getConstantState())) {
                 if (gameType < 6) {
                     int sound = R.raw.action_sound_right_answer;
                     if (levelsCountMiddle == 2) {
@@ -454,11 +449,9 @@ public class Game extends RelativeLayout {
                         }
                     }
                 });
-
             }
-
         } else {
-            if (answeredDrawable.getConstantState().equals(rightAnimal.getImage().getConstantState())) {
+            if (answeredDrawable.getConstantState().equals(rightAnimal.getImageDrawable(context).getConstantState())) {
                 if (gameType < 6) {
                     int sound = R.raw.action_sound_right_answer;
                     if (levelsCountHard == 4) {
@@ -537,27 +530,7 @@ public class Game extends RelativeLayout {
                 });
 
             }
-
         }
-    }
-
-    private void showRightAnswerDialog() {
-        SoundHelper.getInstance().playTrack(R.raw.action_sound_right_answer, null);
-        final int level = DataController.getInstance().getLevel();
-        AlertDialog alertDialog = new AlertDialog.Builder(context).create();
-        alertDialog.setTitle("Congratulation !"); // your dialog title
-        alertDialog.setMessage("You finished this level"); // a message above the buttons
-        alertDialog.setIcon(R.drawable.ic_star); // the icon besides the title you have to change it to the icon/image you have.
-        alertDialog.setCancelable(false);
-        alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, "GO TO NEXT LEVEL", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int which) { // here you can add a method  to the button clicked. you can create another button just by copying alertDialog.setButton("okay")
-                logicOfGame();
-                if (level == Constants.LEVELS.EASY) {
-                    ivStars[0].setImageResource(R.drawable.star);
-                }
-            }
-        });
-        alertDialog.show();
     }
 
     private void showWinDialog() {
@@ -592,7 +565,7 @@ public class Game extends RelativeLayout {
     }
 
     private void inPlaceOfDialog() {
-        final int level = DataController.getInstance().getLevel();
+        final int level = DataController_.getInstance().getLevel();
 
         logicOfGame();
         if (level == Constants.LEVELS.EASY) {
@@ -600,27 +573,6 @@ public class Game extends RelativeLayout {
         }
 
     }
-
-//    private void showWinDialog() {
-//        SoundHelper.getInstance().playTrack(R.raw.action_sound_game_victory);
-//        AlertDialog alertDialog = new AlertDialog.Builder(context).create();
-//        alertDialog.setTitle("Yahooooo !"); // your dialog title
-//        alertDialog.setMessage("You are finished all levels ! Do you want try again ?"); // a message above the buttons
-//        alertDialog.setCancelable(false);
-//        alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, "TRY AGAIN", new DialogInterface.OnClickListener() {
-//            public void onClick(DialogInterface dialog, int which) { // here you can add a method  to the button clicked. you can create another button just by copying alertDialog.setButton("okay")
-//                resetGame();
-//            }
-//        });
-//
-//        alertDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "EXIT", new DialogInterface.OnClickListener() {
-//            public void onClick(DialogInterface dialog, int which) { // here you can add a method  to the button clicked. you can create another button just by copying alertDialog.setButton("okay")
-////                logicOfGame();
-//                ViewController.getViewController().removeAllFragments();
-//            }
-//        });
-//        alertDialog.show();
-//    }
 
     private void resetGame() {
         gameType = 2;
@@ -642,7 +594,7 @@ public class Game extends RelativeLayout {
 
     @OnClick({R.id.btn_skip, R.id.btn_listen, R.id.ib_skip, R.id.ib_e_name, R.id.ib_p_name, R.id.ib_animal_sound})
     public void onViewClicked(final View view) {
-        boolean canTouch = DataController.getInstance().isCanTouch();
+        boolean canTouch = DataController_.getInstance().isCanTouch();
         switch (view.getId()) {
             case R.id.btn_skip:
                 if (canTouch)
@@ -656,8 +608,8 @@ public class Game extends RelativeLayout {
                             getActivity().runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
-                                   view.animate().scaleY(1f).scaleX(1f).start();
-                                    SoundHelper.getInstance().playTrack(rightAnimal.getAnimalVoice(), new OnPlayCompliteListener() {
+                                    view.animate().scaleY(1f).scaleX(1f).start();
+                                    SoundHelper.getInstance().playTrack(rightAnimal.getAnimalVoice(context), new OnPlayCompliteListener() {
                                         @Override
                                         public void onComplite() {
 
@@ -701,7 +653,7 @@ public class Game extends RelativeLayout {
                                 @Override
                                 public void run() {
                                     view.animate().scaleY(1f).scaleX(1f).start();
-                                    SoundHelper.getInstance().playTrack(rightAnimal.geteVoice(), new OnPlayCompliteListener() {
+                                    SoundHelper.getInstance().playTrack(rightAnimal.getEnVoice(context), new OnPlayCompliteListener() {
                                         @Override
                                         public void onComplite() {
 
@@ -723,7 +675,7 @@ public class Game extends RelativeLayout {
                                 @Override
                                 public void run() {
                                     view.animate().scaleY(1f).scaleX(1f).start();
-                                    SoundHelper.getInstance().playTrack(rightAnimal.getpVoice(), new OnPlayCompliteListener() {
+                                    SoundHelper.getInstance().playTrack(rightAnimal.getArmVoice(context), new OnPlayCompliteListener() {
                                         @Override
                                         public void onComplite() {
 
@@ -745,12 +697,15 @@ public class Game extends RelativeLayout {
                                 @Override
                                 public void run() {
                                     view.animate().scaleY(1f).scaleX(1f).start();
-                                    SoundHelper.getInstance().playTrack(rightAnimal.getAnimalVoice(), new OnPlayCompliteListener() {
-                                        @Override
-                                        public void onComplite() {
+                                    if (rightAnimal.getAnimalVoice(context)!=0){
+                                        SoundHelper.getInstance().playTrack(rightAnimal.getAnimalVoice(context), new OnPlayCompliteListener() {
+                                            @Override
+                                            public void onComplite() {
 
-                                        }
-                                    });
+                                            }
+                                        });
+                                    }
+
                                 }
                             });
                         }

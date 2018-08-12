@@ -4,10 +4,10 @@ import android.content.Context;
 import android.media.MediaPlayer;
 import android.net.Uri;
 
-import learnlanguages.hk.com.controllers.DataController;
 import learnlanguages.hk.com.controllers.ViewController;
 import learnlanguages.hk.com.interfacies.OnPlayCompliteListener;
 import learnlanguages.hk.com.learnlanguages.R;
+import learnlanguages.hk.com.new_version.controllers.DataController_;
 
 
 /**
@@ -33,14 +33,14 @@ public class SoundHelper {
     }
 
     public void playTrack(int trackId, final OnPlayCompliteListener onPlayCompliteListener) {
-        DataController.getInstance().setCanTouch(false);
+        DataController_.getInstance().setCanTouch(false);
         stopPlayer();
         mp = MediaPlayer.create(context, trackId);
         mp.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             @Override
             public void onCompletion(MediaPlayer mediaPlayer) {
                 onPlayCompliteListener.onComplite();
-                DataController.getInstance().setCanTouch(true);
+                DataController_.getInstance().setCanTouch(true);
             }
         });
         mp.start();
@@ -48,14 +48,14 @@ public class SoundHelper {
     }
 
     public void playTrack(int trackId, boolean isLooping, final OnPlayCompliteListener onPlayCompliteListener) {
-        DataController.getInstance().setCanTouch(false);
+        DataController_.getInstance().setCanTouch(false);
         stopPlayer();
         mp = MediaPlayer.create(context, trackId);
         mp.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             @Override
             public void onCompletion(MediaPlayer mediaPlayer) {
                 onPlayCompliteListener.onComplite();
-                DataController.getInstance().setCanTouch(true);
+                DataController_.getInstance().setCanTouch(true);
             }
         });
         mp.start();
@@ -63,7 +63,7 @@ public class SoundHelper {
     }
 
     public void playTrack(Uri trackId, final OnPlayCompliteListener onPlayCompliteListener) {
-        DataController.getInstance().setCanTouch(false);
+        DataController_.getInstance().setCanTouch(false);
         stopPlayer();
         while (mp == null){
             mp = MediaPlayer.create(context, trackId);
@@ -71,7 +71,7 @@ public class SoundHelper {
                 @Override
                 public void onCompletion(MediaPlayer mediaPlayer) {
                     onPlayCompliteListener.onComplite();
-                    DataController.getInstance().setCanTouch(true);
+                    DataController_.getInstance().setCanTouch(true);
                 }
             });
         }

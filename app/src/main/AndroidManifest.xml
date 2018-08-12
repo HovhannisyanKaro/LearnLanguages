@@ -3,12 +3,15 @@
     package="learnlanguages.hk.com.learnlanguages">
 
     <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:name="learnlanguages.hk.com.app.MyApplication"
         android:allowBackup="true"
+        android:hardwareAccelerated="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:largeHeap="true"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
@@ -16,24 +19,37 @@
             android:screenOrientation="portrait" />
         <activity
             android:name="learnlanguages.hk.com.activities.SplashScreenActivity"
-            android:screenOrientation="portrait">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name="learnlanguages.hk.com.activities.PlayActivity"
             android:screenOrientation="landscape" />
         <activity
             android:name="learnlanguages.hk.com.activities.LearnActivity"
             android:screenOrientation="portrait" />
-        <activity android:name="learnlanguages.hk.com.activities.WriteActivity" />
+        <activity
+            android:name="learnlanguages.hk.com.activities.WriteActivity"
+            android:screenOrientation="portrait" />
         <activity android:name="learnlanguages.hk.com.activities.BubblesActivity" />
-        <activity android:name="learnlanguages.hk.com.activities.PuzzleActivity">
+        <activity android:name="learnlanguages.hk.com.activities.PuzzleActivity" />
+        <activity android:name="learnlanguages.hk.com.activities.AdminActivity" />
+        <activity android:name="learnlanguages.hk.com.new_version.splash_screen.SplashScreenActivity_">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name="learnlanguages.hk.com.activities.MatchWordActivity" />
+
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="489279305cc82396cd11156fe07c01525887f03b" />
+
+        <activity android:name="learnlanguages.hk.com.test.TestActivity" />
+        <activity android:name="learnlanguages.hk.com.activities.PhoneMainActivity">
 
         </activity>
+        <activity android:name="learnlanguages.hk.com.activities.CallActivity"></activity>
     </application>
 
 </manifest>

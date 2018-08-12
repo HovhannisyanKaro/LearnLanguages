@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 
 import learnlanguages.hk.com.activities.LearnActivity;
+import learnlanguages.hk.com.activities.PhoneMainActivity;
 import learnlanguages.hk.com.activities.PlayActivity;
 import learnlanguages.hk.com.activities.WriteActivity;
 import learnlanguages.hk.com.learnlanguages.R;
@@ -20,7 +21,7 @@ import learnlanguages.hk.com.fragments.LevelSelectionFragment;
 
 public class ViewController {
 
-    private static ViewController dataController = null ;
+    private static ViewController dataController = null;
     private Activity contex;
     private FragmentManager fragmentManager;
     private LearnFragment learnFragment;
@@ -28,11 +29,13 @@ public class ViewController {
     private PlayActivity playActivity;
     private WriteActivity writeActivity;
     private LearnActivity learnActivity;
+    private PhoneMainActivity phoneMainActivity;
 
-    private ViewController(){}
+    private ViewController() {
+    }
 
-    public static ViewController getViewController(){
-        if (dataController == null){
+    public static ViewController getViewController() {
+        if (dataController == null) {
             dataController = new ViewController();
         }
         return dataController;
@@ -70,6 +73,14 @@ public class ViewController {
         this.writeActivity = writeActivity;
     }
 
+    public void setPhoneMainActivity(PhoneMainActivity phoneMainActivity) {
+        this.phoneMainActivity = phoneMainActivity;
+    }
+
+    public PhoneMainActivity getPhoneMainActivity() {
+        return phoneMainActivity;
+    }
+
     public LearnFragment getLearnFragment() {
         return learnFragment;
     }
@@ -95,18 +106,18 @@ public class ViewController {
     }
 
 
-    public void addFragment(@IdRes int comtainerId,  Fragment fragment) {
+    public void addFragment(@IdRes int comtainerId, Fragment fragment) {
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.add(comtainerId, fragment, fragment.getClass().getSimpleName()).addToBackStack(null).commit();
     }
 
-    public  void removeAllFragments() {
+    public void removeAllFragments() {
         while (fragmentManager.getBackStackEntryCount() > 0) {
             fragmentManager.popBackStackImmediate();
         }
     }
 
-    public void resetViewController(){
+    public void resetViewController() {
         dataController = null;
     }
 

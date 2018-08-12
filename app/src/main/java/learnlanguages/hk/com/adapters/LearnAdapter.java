@@ -13,7 +13,6 @@ import java.util.ArrayList;
 
 import learnlanguages.hk.com.controllers.ViewController;
 import learnlanguages.hk.com.learnlanguages.R;
-import learnlanguages.hk.com.controllers.DataController;
 import learnlanguages.hk.com.entities.Animal;
 import learnlanguages.hk.com.interfacies.RecyclerViewOnClickListener;
 
